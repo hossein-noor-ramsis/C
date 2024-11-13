@@ -4,30 +4,38 @@
 
 int main()
 {
-  int seed = 810103332;
+  unsigned int seed = 810103332;
   srand(seed);
   // srand(time(0));
 
-  int random_number = rand() % 100;
-  int guess;
+  int randomNumber = rand() % 100;
+  int guess, guessStatus;
 
-  while (guess != random_number)
+  while (guess != randomNumber)
   {
-    printf("Enter your guess: ");
-    scanf("%d", &guess);
+    printf("Enter your guess (between 1 and 100): ");
+    guessStatus = scanf("%d", &guess);
 
-    if (guess > random_number)
+    if (guessStatus != 1)
+    {
+      printf("Invalid Input!\n\n");
+      scanf("%*[^\n]");
+
+      continue;
+    }
+
+    if (guess > randomNumber)
     {
       printf("Your guess is greather than the random number!\n\n");
       continue;
     }
 
-    if (guess < random_number)
+    if (guess < randomNumber)
     {
       printf("Your guess is less then the random number!\n\n");
       continue;
     }
   }
 
-  printf("Your guess was right! the random number was: %d\n", random_number);
+  printf("Your guess is right! the random number was: %d\n", randomNumber);
 }
