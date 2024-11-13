@@ -2,16 +2,16 @@
 
 int main()
 {
-  int a = 5 | (12 & (3 + (8 * 2) - 7));                // 13
-  int b = 10 ^ ((5 + (3 * 2) - 8) << 1);               // 12
-  int c = ((12 >> ((3 & 5) + 7)) ^ ((3 * 2) - 1)) | 8; // 13
+  int num, result = 0;
 
-  printf("a: %d\n", a);
-  printf("b: %d\n", b);
-  printf("c: %d\n", c);
+  printf("Enter your number: ");
+  scanf("%d", &num);
 
-  return 0;
+  while (num != 0)
+  {
+    result = (result * 10) + (num % 10);
+    num = (num - (num % 10)) / 10;
+  }
+
+  printf("result: %d\n", result);
 }
-
-// Hossein Noor Ramsis
-// 810103332
