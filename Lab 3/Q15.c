@@ -27,12 +27,14 @@ int main()
     if (guess > randomNumber)
     {
       printf("Your guess is greather than the random number!\n\n");
+
       continue;
     }
 
     if (guess < randomNumber)
     {
       printf("Your guess is less then the random number!\n\n");
+      
       continue;
     }
   }
