@@ -1,17 +1,57 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
-  int num, result = 0;
+  /* Initialize variabels */
+  int startNum, endNum;
+  bool isThereAnyPrime = false;
 
-  printf("Enter your number: ");
-  scanf("%d", &num);
+  /* get the interval of numbers from the user */
+  printf("Enter your start number: ");
+  scanf("%d", &startNum);
 
-  while (num != 0)
+  printf("Enter your end number: ");
+  scanf("%d", &endNum);
+
+  /* the logic */
+  for (int i = startNum + 1; i <= endNum; i++)
   {
-    result = (result * 10) + (num % 10);
-    num = (num - (num % 10)) / 10;
+    bool isPrime = true;
+
+    if (i == 1)
+    {
+      continue;
+    }
+
+    for (int j = i - 1; j > 2; j--)
+    {
+
+      if (i % j == 0)
+      {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime == true)
+    {
+      if (isThereAnyPrime == false)
+      {
+        printf("\nThe prime numbers are: ");
+      }
+
+      printf("%d ", i);
+      isThereAnyPrime = true;
+    }
   }
 
-  printf("result: %d\n", result);
+  printf("\n");
+
+  if (isThereAnyPrime == false)
+  {
+    printf("There are no prime numbers in the (%d, %d] \n", startNum, endNum);
+  }
+
+  return 0;
 }
