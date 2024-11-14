@@ -53,9 +53,7 @@ void myRealloc(int *address, unsigned int amount)
     scanf("%u", &bytes);
     fflush(stdin);
 
-    printf("bytes: %u", bytes);
     numbers = realloc(address, bytes);
-
     printf("numbers are: ");
 
     for (unsigned int i = 0; i < amount + bytes; i++)
@@ -68,7 +66,9 @@ void myRealloc(int *address, unsigned int amount)
     printf("\n");
 
     // free the previous memory
-    free(address);
-    printf("address[1]: %d", address[1]);
+    // free(address);
+    // address = NULL;
+    // printf("address[1]: %d\n", address[1]);
+    // printf("numbers[1]: %d\n", numbers[1]);
   }
 }
