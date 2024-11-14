@@ -1,57 +1,74 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+
+void myRealloc(int *numbers, unsigned int amount);
 
 int main()
 {
-  /* Initialize variabels */
-  int startNum, endNum;
-  bool isThereAnyPrime = false;
+  // Allocate memory
+  int *numbers;
+  unsigned int amount = 0;
 
-  /* get the interval of numbers from the user */
-  printf("Enter your start number: ");
-  scanf("%d", &startNum);
+  printf("Enter amout of the number: ");
+  scanf("%u", &amount);
+  fflush(stdin);
 
-  printf("Enter your end number: ");
-  scanf("%d", &endNum);
+  numbers = calloc(amount, sizeof(*numbers));
 
-  /* the logic */
-  for (int i = startNum + 1; i <= endNum; i++)
+  // Write to the memory
+  numbers[0] = 10;
+  numbers[1] = 20;
+  numbers[2] = 30;
+
+  // Read from the memory
+  printf("numbers are: ");
+
+  for (unsigned int i = 0; i < amount; i++)
   {
-    bool isPrime = true;
-
-    if (i == 1)
-    {
-      continue;
-    }
-
-    for (int j = i - 1; j > 2; j--)
-    {
-
-      if (i % j == 0)
-      {
-        isPrime = false;
-        break;
-      }
-    }
-
-    if (isPrime == true)
-    {
-      if (isThereAnyPrime == false)
-      {
-        printf("\nThe prime numbers are: ");
-      }
-
-      printf("%d ", i);
-      isThereAnyPrime = true;
-    }
+    printf("%d ", numbers[i]);
   }
 
   printf("\n");
 
-  if (isThereAnyPrime == false)
-  {
-    printf("There are no prime numbers in the (%d, %d] \n", startNum, endNum);
-  }
+  myRealloc(numbers, amount);
 
   return 0;
+}
+
+void myRealloc(int *address, unsigned int amount)
+{
+  int *numbers;
+  char hasRealloc = 'n';
+  unsigned int bytes = 0;
+
+  printf("Do you need to reallocate the momory? (y/n): ");
+  scanf("%c", &hasRealloc);
+  fflush(stdin);
+
+  if (hasRealloc == 'y')
+  {
+    // reallocate the memory
+    printf("How much bytes do you need? ");
+    scanf("%u", &bytes);
+    fflush(stdin);
+
+    printf("bytes: %u", bytes);
+    numbers = realloc(address, bytes);
+
+    printf("numbers are: ");
+
+    for (unsigned int i = 0; i < amount + bytes; i++)
+    {
+      // write and read the memory
+      numbers[i] = (int)i * 10;
+      printf("%d ", numbers[i]);
+    }
+
+    printf("\n");
+
+    // free the previous memory
+    free(address);
+    printf("address[1]: %d", address[1]);
+  }
 }
