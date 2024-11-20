@@ -1,74 +1,54 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
-void myRealloc(int *numbers, unsigned int amount);
+int isArmstrong(int n);
 
-int main()
+    int main()
 {
-  // Allocate memory
-  int *numbers;
-  unsigned int amount = 0;
+  /* init */
+  int num = 0;
+  int result = 0;
 
-  printf("Enter amout of the number: ");
-  scanf("%u", &amount);
-  fflush(stdin);
+  /* input */
+  printf("Enter your number: ");
+  scanf("%d", &num);
+  result = isArmstrong(num);
 
-  numbers = calloc(amount, sizeof(*numbers));
-
-  // Write to the memory
-  numbers[0] = 10;
-  numbers[1] = 20;
-  numbers[2] = 30;
-
-  // Read from the memory
-  printf("numbers are: ");
-
-  for (unsigned int i = 0; i < amount; i++)
-  {
-    printf("%d ", numbers[i]);
-  }
-
-  printf("\n");
-
-  myRealloc(numbers, amount);
+  /* output */
+  printf("result: %d\n", result);
 
   return 0;
 }
 
-void myRealloc(int *address, unsigned int amount)
+int isArmstrong(int n)
 {
-  int *numbers;
-  char hasRealloc = 'n';
-  unsigned int bytes = 0;
+  int sum = 0;
+  int length = 0;
 
-  printf("Do you need to reallocate the momory? (y/n): ");
-  scanf("%c", &hasRealloc);
-  fflush(stdin);
-
-  if (hasRealloc == 'y')
+  for (int i = n; i != 0;)
   {
-    // reallocate the memory
-    printf("How much bytes do you need? ");
-    scanf("%u", &bytes);
-    fflush(stdin);
+    i = (i - (i % 10)) / 10;
+    length++;
+  }
 
-    numbers = realloc(address, bytes);
-    printf("numbers are: ");
+  for (int i = n; i != 0;)
+  {
+    int digit = (i % 10);
+    int poweredNumber = 1;
 
-    for (unsigned int i = 0; i < amount + bytes; i++)
+    i = (i - digit) / 10;
+
+    for (int j = 0; j < length; j++)
     {
-      // write and read the memory
-      numbers[i] = (int)i * 10;
-      printf("%d ", numbers[i]);
+      poweredNumber = poweredNumber * digit;
     }
 
-    printf("\n");
-
-    // free the previous memory
-    // free(address);
-    // address = NULL;
-    // printf("address[1]: %d\n", address[1]);
-    // printf("numbers[1]: %d\n", numbers[1]);
+    sum = sum + poweredNumber;
   }
+
+  if (sum == n)
+  {
+    return 1;
+  }
+
+  return 0;
 }
