@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-int isArmstrong(int n);
+int NumberofWays(int);
+int fact(int);
 
-    int main()
+int main()
 {
   /* init */
   int num = 0;
@@ -11,7 +12,7 @@ int isArmstrong(int n);
   /* input */
   printf("Enter your number: ");
   scanf("%d", &num);
-  result = isArmstrong(num);
+  result = NumberofWays(num);
 
   /* output */
   printf("result: %d\n", result);
@@ -19,36 +20,39 @@ int isArmstrong(int n);
   return 0;
 }
 
-int isArmstrong(int n)
+int NumberofWays(int n)
 {
-  int sum = 0;
-  int length = 0;
+  int oneObstacle = n;
+  int twoObstacles = 0;
 
-  for (int i = n; i != 0;)
+  int result = 0;
+
+  while (oneObstacle > 0)
   {
-    i = (i - (i % 10)) / 10;
-    length++;
-  }
-
-  for (int i = n; i != 0;)
-  {
-    int digit = (i % 10);
-    int poweredNumber = 1;
-
-    i = (i - digit) / 10;
-
-    for (int j = 0; j < length; j++)
+    if (twoObstacles == 0)
     {
-      poweredNumber = poweredNumber * digit;
+      result++;
+    }
+    else
+    {
+      result += fact(oneObstacle + twoObstacles);
     }
 
-    sum = sum + poweredNumber;
+    oneObstacle -= 2;
+    twoObstacles++;
   }
 
-  if (sum == n)
+  return result;
+}
+
+int fact(int n)
+{
+  int result = 1;
+
+  for (int i = 1; i <= n; i++)
   {
-    return 1;
+    result *= i;
   }
 
-  return 0;
+  return result;
 }
