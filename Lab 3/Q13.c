@@ -30,7 +30,7 @@ int main()
     printf("Jomeh\n");
     break;
   default:
-    printf("Invalid number!\n");
+    printf("Invalid input!\n");
     break;
   }
 

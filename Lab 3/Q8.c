@@ -13,7 +13,7 @@ int main()
       printf("#");
     }
     printf("\n");
-    // * the rason of the \n is that to print the a number of # in one line.
+    // * the rason of the \n is that to print the each row of # in one line.
   }
 
   return 0;
