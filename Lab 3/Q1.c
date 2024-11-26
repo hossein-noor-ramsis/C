@@ -21,4 +21,4 @@ int main()
   return 0;
 }
 
-//* change the = oprator to ==
+//* change the = operator to ==
