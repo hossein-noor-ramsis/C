@@ -12,4 +12,4 @@ int main()
   return 0;
 }
 
-// * each time the condition is flase the fib fn will call itself twice
+// * each time the condition is false the fib fn will call itself twice

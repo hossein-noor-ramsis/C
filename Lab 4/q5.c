@@ -7,7 +7,7 @@ int main()
   int a;
   scanf("%d", &a);
 
-  // * the if statment will run if the condition is true
+  // * the if statement will run if the condition is true
   // * if a is EVEN, then the function will return 1
   // * the number 1 means true, number 0 means false and all other numbers means true
   if (function(a))

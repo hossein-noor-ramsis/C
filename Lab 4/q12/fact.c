@@ -1,4 +1,4 @@
-#include <fact.h>
+#include "fact.h"
 
 int fact(int number)
 {

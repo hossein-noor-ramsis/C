@@ -13,14 +13,14 @@ int f(int x)
 {
   // * x = 10
   return g(x);
-  // * g() will return 6 and the f() will rethrn the same value
+  // * g() will return 6 and the f() will return the same value
 }
 
 int main()
 {
   int a = 10;
   printf("%d\n", f(a));
-  // * the printf() will print the returnd value 6 by f()
+  // * the printf() will print the returned value 6 by f()
 
   return 0;
 }

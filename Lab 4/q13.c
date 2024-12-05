@@ -12,7 +12,7 @@ int DigitSum(int n)
     // * remove the last digit in the number of n
     n = (n - (n % 10)) / 10;
 
-    // * call the DigitSum function whith new value of n
+    // * call the DigitSum function with new value of n
     DigitSum(n);
   }
 

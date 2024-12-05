@@ -60,5 +60,8 @@
   "cSpell.enabledFileTypes": {
     "c": true
   },
-  "commentTranslate.targetLanguage": "ru"
+  "commentTranslate.targetLanguage": "ru",
+  "files.associations": {
+    "fact.h": "c"
+  }
 }

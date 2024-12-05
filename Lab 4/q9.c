@@ -18,5 +18,5 @@ float function(float cal, float phy, float lab)
 }
 
 // * average = 18.333334
-// * true answer was: avvreage = 17.833334
+// * true answer was: average = 17.833334
 // * so you need to save the true order of arguments
