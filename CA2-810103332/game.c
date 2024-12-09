@@ -10,7 +10,7 @@ void addRandom(int board[4][4]);
 int calculateScore(int board[4][4]);
 
 // movement prototypes
-int moveLeft(int board[4][4]);
+int moveLeft(int board[4][4], int tempBoard[4][4]);
 void startNew(int[4][4]);
 void copyBoard(int board[4][4], int tempBoard[4][4]);
 
@@ -38,8 +38,7 @@ int main()
         {
         case 'L':
         case 'l':
-            copyBoard(board, tempBoard);
-            moveLeft(board);
+            moveLeft(board, tempBoard);
 
             break;
         case 'R':
@@ -180,7 +179,7 @@ int calculateScore(int board[4][4])
 }
 
 // movement funcs
-int moveLeft(int board[4][4])
+int moveLeft(int board[4][4], int tempBoard[4][4])
 {
     int flag = 0;
 
@@ -190,6 +189,11 @@ int moveLeft(int board[4][4])
         {
             if (board[i][j] == 0)
             {
+                if (flag == 0)
+                {
+                    copyBoard(board, tempBoard);
+                }
+
                 board[i][j] = board[i][j + 1];
                 board[i][j + 1] = 0;
 
@@ -262,7 +266,7 @@ void copyBoard(int boardOne[4][4], int boardTwo[4][4])
         }
     }
 
-    // TODO: save the prev board in another temp and check if they are same so 
+    // TODO: save the prev board in another temp and check if they are same so
 }
 
 // game status check funcs
