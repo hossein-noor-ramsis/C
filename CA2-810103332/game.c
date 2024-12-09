@@ -2,17 +2,24 @@
 #include <stdlib.h>
 #include <time.h>
 
+//* functions prototype
+// screen and board prototypes
+void initializeBoard(int board[4][4]);
 char printBoard(int board[4][4]);
 void addRandom(int board[4][4]);
-void initializeBoard(int board[4][4]);
 int calculateScore(int board[4][4]);
+
+// movement prototypes
+int moveLeft(int board[4][4]);
+void startNew(int[4][4]);
+void copyBoard(int board[4][4], int tempBoard[4][4]);
+
+// game status check prototypes
 int checkIsGameOver(int board[4][4]);
 void gameOver(int board[4][4]);
 void winGame(int board[4][4]);
-void startNew(int[4][4]);
-int moveLeft(int board[4][4]);
-void copyBoard(int board[4][4], int tempBoard[4][4]);
 
+//* main function
 int main()
 {
     int flag = 1;
@@ -71,6 +78,14 @@ int main()
     return 0;
 }
 
+//* functions definition
+// screen and board
+void initializeBoard(int board[4][4])
+{
+    addRandom(board);
+    addRandom(board);
+}
+
 char printBoard(int board[4][4])
 {
     int score = calculateScore(board);
@@ -86,8 +101,31 @@ char printBoard(int board[4][4])
         {
             if (board[i][j])
             {
+                int digitsCount = 0;
+                int num = board[i][j];
 
-                printf("|   %d   ", board[i][j]);
+                while (num)
+                {
+                    digitsCount++;
+                    num = (num - (num % 10)) / 10;
+                }
+
+                if (digitsCount == 1)
+                {
+                    printf("|   %d   ", board[i][j]);
+                }
+                else if (digitsCount == 2)
+                {
+                    printf("|  %d   ", board[i][j]);
+                }
+                else if (digitsCount == 3)
+                {
+                    printf("|  %d  ", board[i][j]);
+                }
+                else
+                {
+                    printf("| %d  ", board[i][j]);
+                }
             }
             else
             {
@@ -101,14 +139,9 @@ char printBoard(int board[4][4])
     printf("Move (L/R/U/D) or Quit, Back, New Start(Q, B, N)\n");
 
     scanf("%c", &move);
-    while(getchar() != '\n');
+    while (getchar() != '\n')
+        ;
     return move;
-}
-
-void initializeBoard(int board[4][4])
-{
-    addRandom(board);
-    addRandom(board);
 }
 
 void addRandom(int board[4][4])
@@ -146,6 +179,91 @@ int calculateScore(int board[4][4])
     return score;
 }
 
+// movement funcs
+int moveLeft(int board[4][4])
+{
+    int flag = 0;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (board[i][j] == 0)
+            {
+                board[i][j] = board[i][j + 1];
+                board[i][j + 1] = 0;
+
+                for (int k = j; k > 0; k--)
+                {
+                    if (board[i][k - 1] == 0)
+                    {
+                        board[i][k - 1] = board[i][k];
+                        board[i][k] = 0;
+                    }
+                }
+
+                flag = 1;
+            }
+        }
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (board[i][j] == 0)
+            {
+                continue;
+            }
+
+            if (board[i][j] == board[i][j + 1])
+            {
+                board[i][j] = board[i][j] * 2;
+                board[i][j + 1] = 0;
+
+                for (int k = j; k > 0; k--)
+                {
+                    if (board[i][k - 1] == 0)
+                    {
+                        board[i][k - 1] = board[i][k];
+                        board[i][k] = 0;
+                    }
+                }
+            }
+        }
+    }
+
+    if (flag)
+    {
+        addRandom(board);
+    }
+
+    return flag;
+}
+
+void startNew(int board[4][4])
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            board[i][j] = 0;
+        }
+    }
+}
+
+void copyBoard(int boardOne[4][4], int boardTwo[4][4])
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            boardTwo[i][j] = boardOne[i][j];
+        }
+    }
+}
+
+// game status check funcs
 int checkIsGameOver(int board[4][4])
 {
     int isGameOver = 1;
@@ -224,86 +342,4 @@ void winGame(int board[4][4])
     printf("\t\t YOU WIN! \t\t");
     printf("\n\n");
     printf("--------------------\n");
-}
-
-void startNew(int board[4][4])
-{
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            board[i][j] = 0;
-        }
-    }
-}
-
-void copyBoard(int boardOne[4][4], int boardTwo[4][4])
-{
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            boardTwo[i][j] = boardOne[i][j];
-        }
-    }
-}
-
-int moveLeft(int board[4][4])
-{
-    int flag = 0;
-
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (board[i][j] == 0)
-            {
-                board[i][j] = board[i][j + 1];
-                board[i][j + 1] = 0;
-
-                for (int k = j; k > 0; k--)
-                {
-                    if (board[i][k - 1] == 0)
-                    {
-                        board[i][k - 1] = board[i][k];
-                        board[i][k] = 0;
-                    }
-                }
-
-                flag = 1;
-            }
-        }
-    }
-
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (board[i][j] == 0) {
-                continue;
-            }
-
-            if (board[i][j] == board[i][j + 1])
-            {
-                board[i][j] = board[i][j] * 2;
-                board[i][j + 1] = 0;
-
-                for (int k = j; k > 0; k--)
-                {
-                    if (board[i][k - 1] == 0)
-                    {
-                        board[i][k - 1] = board[i][k];
-                        board[i][k] = 0;
-                    }
-                }
-            }
-        }
-    }
-
-    if (flag)
-    {
-        addRandom(board);
-    }
-
-    return flag;
 }
