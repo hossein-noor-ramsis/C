@@ -25,6 +25,8 @@ int main()
     {
         move = printBoard(board);
 
+        copyBoard(board, tempBoard);
+
         switch (move)
         {
         case 'L':
@@ -59,8 +61,6 @@ int main()
         default:
             break;
         }
-
-        copyBoard(board, tempBoard);
     }
 
     return 0;
