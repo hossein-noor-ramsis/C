@@ -10,3 +10,4 @@ int main()
 }
 
 //* with gets() you get tab and spaces in the string
+//* for gets() the \n (enter) is the delimiter 

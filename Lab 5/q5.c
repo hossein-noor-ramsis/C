@@ -14,7 +14,7 @@
 int main()
 {
   char str1[] = {'h', 'e', 'l', 'l', 'o'};
-  // * by this declaration you should add the null (\n) at the end of the string
+  // * by this declaration you should add the null (\0) at the end of the string
   printf("string 1= %s\n", str1);
 
   char str2[] = {'h', 'e', 'l', 'l', 'o', '\0'};

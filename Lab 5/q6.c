@@ -10,4 +10,4 @@ int main()
 
 // * input: hello world
 // * output: hello
-// * because: for the scanf() function the space is mean the end of the input
+// * because: for the scanf() function the space is mean the end of the input (' ' is a delimiter)

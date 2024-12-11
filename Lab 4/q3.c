@@ -28,4 +28,4 @@ int function(int n)
   printf("ODD (FARD)!\n");
 }
 
-// * the value of argument will be assigned to the parameter like p = a 
+// * the value of argument will be assigned to the parameter like n = a 
