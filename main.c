@@ -1,60 +1,23 @@
 #include <stdio.h>
-
-int NumberofWays(int);
-int fact(int);
+void function(char **);
 
 int main()
 {
-  /* init */
-  int num = 0;
-  int result = 0;
-
-  /* input */
-  printf("Enter your number: ");
-  scanf("%d", &num);
-  result = NumberofWays(num);
-
-  /* output */
-  printf("result: %d\n", result);
+  char *arr[] = {"icsp", "fall", "1403", "hw", "6", "pointers"};
+  function(arr);
 
   return 0;
 }
 
-int NumberofWays(int n)
+void function(char **ptr)
 {
-  int oneObstacle = n;
-  int twoObstacles = 0;
+  char *ptr1;
+  //* ptr: is the pointer to the first string in array
 
-  int result = 0;
+  ptr1 = (ptr += sizeof(int))[-2];
+  //* ptr = ptr + 4: ptr is a pointer to the fifth string in array
+  //* and when it be ptr[-2] thant mean the third string in array
 
-  while (oneObstacle > 0)
-  {
-    if (twoObstacles == 0)
-    {
-      result++;
-    }
-    else
-    {
-      result += fact(oneObstacle + twoObstacles);
-    }
-
-    oneObstacle -= 2;
-    twoObstacles++;
-  }
-
-  return result;
+  printf("%s\n", ptr1);
+  //* and at end we printing the string "1403"
 }
-
-int fact(int n)
-{
-  int result = 1;
-
-  for (int i = 1; i <= n; i++)
-  {
-    result *= i;
-  }
-
-  return result;
-}
-
-// 1 & 2, 1 & 3, 2 & 3
