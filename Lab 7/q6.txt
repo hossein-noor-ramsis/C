@@ -1,0 +1,2 @@
+the 2d dynamic array is a an array of array 
+so we need first to free the array which are inside it and the free it self
