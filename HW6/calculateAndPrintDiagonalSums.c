@@ -3,15 +3,16 @@
 #include <stdbool.h>
 
 int calculateAndPrintDiagonalSums(int N, int matrix[N][N]);
+bool IsDiagonalMatrix(int N, int matrix[N][N]);
 
 int main()
 {
   int array[3][3] = {
       {4, 3, 2},
-      {3, 2, 3},
+      {3, 4, 3},
       {2, 3, 4}};
 
-  printf("diagonal sum is: %d", calculateAndPrintDiagonalSums(3, array));
+  printf("diagonal sum is: %d", IsDiagonalMatrix(3, array));
 }
 
 int calculateAndPrintDiagonalSums(int N, int matrix[N][N])
@@ -41,21 +42,45 @@ bool IsDiagonalMatrix(int N, int matrix[N][N])
 {
   bool isDiagonal = false;
 
-  int size = 1;
-  int *array = calloc(size, typedef(int));
+  int array[N];
 
   int sum = 0;
+  int x = 0;
+  int y = N - 1;
 
   for (int i = 0; i < N; i++)
   {
     for (int j = 0; j < N; j++)
     {
-      if ((i == x && j == y) || i == j)
+      if ((i == x && j == y))
       {
         array[i] = matrix[i][j];
-        size++;
+      }
+    }
 
-        realloc(array, size * typedef(int));
+    y--;
+    x++;
+  }
+
+  for (int i = 0; i < N; i++)
+  {
+    sum += array[i];
+  }
+
+  if (sum / N == array[0])
+  {
+    isDiagonal = true;
+
+    return isDiagonal;
+  }
+
+  for (int i = 0; i < N; i++)
+  {
+    for (int j = 0; j < N; j++)
+    {
+      if (i == j)
+      {
+        array[i] = matrix[i][j];
       }
     }
   }
@@ -63,6 +88,11 @@ bool IsDiagonalMatrix(int N, int matrix[N][N])
   for (int i = 0; i < N; i++)
   {
     sum = +array[i];
+  }
+
+  if (sum / N == array[0])
+  {
+    isDiagonal = true;
   }
 
   return isDiagonal;

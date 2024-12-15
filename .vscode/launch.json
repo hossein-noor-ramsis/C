@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Hossein/Desktop/Folders/Programming/PC/Projects/C/Lab 7",
-      "program": "c:/Users/Hossein/Desktop/Folders/Programming/PC/Projects/C/Lab 7/build/Debug/outDebug",
+      "cwd": "c:/Users/Hossein/Desktop/Folders/Programming/PC/Projects/C/HW6",
+      "program": "c:/Users/Hossein/Desktop/Folders/Programming/PC/Projects/C/HW6/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
