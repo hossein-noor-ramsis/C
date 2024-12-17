@@ -63,5 +63,8 @@
   "commentTranslate.targetLanguage": "ru",
   "files.associations": {
     "fact.h": "c"
-  }
+  },
+  "cSpell.words": [
+    "Bactery"
+  ]
 }

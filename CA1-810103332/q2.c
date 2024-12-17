@@ -15,7 +15,7 @@ int main()
   scanf("%f %f", &firstBacteryWeight, &seccondBacteryWeight);
   scanf("%f %f", &firstBacteryGrowth, &seccondBacteryGrowth);
 
-  if ((firstBacteryWeight <= seccondBacteryWeight) && (firstBacteryGrowth < seccondBacteryGrowth))
+  if ((firstBacteryWeight <= seccondBacteryWeight) && (firstBacteryGrowth <= seccondBacteryGrowth))
   {
     result = -1;
     printf("%d\n", result);
