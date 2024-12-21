@@ -1,23 +1,66 @@
 #include <stdio.h>
-void function(char **);
+#include <string.h>
+#include <stdbool.h>
+
+int replaceNextlinesWithCommas(const char *in, const char *out);
 
 int main()
 {
-  char *arr[] = {"icsp", "fall", "1403", "hw", "6", "pointers"};
-  function(arr);
-
-  return 0;
+  replaceNextlinesWithCommas("input.txt", "output.txt");
 }
 
-void function(char **ptr)
+int replaceNextlinesWithCommas(const char *in, const char *out)
 {
-  char *ptr1;
-  //* ptr: is the pointer to the first string in array
+  int status = 1;
+  char buffer[100];
 
-  ptr1 = (ptr += sizeof(int))[-2];
-  //* ptr = ptr + 4: ptr is a pointer to the fifth string in array
-  //* and when it be ptr[-2] thant mean the third string in array
+  FILE *input;
+  FILE *output;
 
-  printf("%s\n", ptr1);
-  //* and at end we printing the string "1403"
+  input = fopen(in, "w");
+  output = fopen(out, "w");
+
+  if ((input == NULL) || (output == NULL))
+  {
+    printf("Could not open file\n");
+  }
+
+  fgets(buffer, sizeof(buffer), input);
+
+  for (unsigned int i = 0; i < strlen(buffer); i++)
+  {
+    bool condition1 = buffer[i] == 110;
+    bool condition2 = buffer[i + 1] == 101;
+    bool condition3 = buffer[i + 2] == 120;
+    bool condition4 = buffer[i + 3] == 116;
+    bool condition5 = buffer[i + 4] == 32;
+    bool condition6 = buffer[i + 5] == 108;
+    bool condition7 = buffer[i + 6] == 105;
+    bool condition8 = buffer[i + 7] == 110;
+    bool condition9 = buffer[i + 8] == 101;
+
+    bool flag = condition1 && condition2 && condition3 && condition4 && condition5 && condition6 && condition7 && condition8 && condition9;
+
+    if (flag)
+    {
+      buffer[i] = 44;
+      buffer[i + 1] = 44;
+      buffer[i + 2] = 44;
+      buffer[i + 3] = 44;
+      buffer[i + 4] = 44;
+      buffer[i + 5] = 44;
+      buffer[i + 6] = 44;
+      buffer[i + 7] = 44;
+      buffer[i + 8] = 44;
+
+      status = 0;
+    }
+  }
+
+  fprintf(output, buffer);
+
+  fclose(output);
+  fclose(input);
+
+  return status;
 }
