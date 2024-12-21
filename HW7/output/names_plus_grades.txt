@@ -1,0 +1,4 @@
+Fariba: 77.56
+Mohsen: 7
+Kasra: 0
+Amin: 100
