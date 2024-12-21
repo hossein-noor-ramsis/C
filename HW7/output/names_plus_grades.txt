@@ -1,4 +1,4 @@
-Fariba: 77.56
-Mohsen: 7
-Kasra: 0
-Amin: 100
+Fariba: 66.000000
+Mohsen: 88.997704
+Kasra: 100.000000
+Amin: 0.000000

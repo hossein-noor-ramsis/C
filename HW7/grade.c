@@ -40,7 +40,7 @@ int replaceNextlinesWithCommas(const char *in, const char *out)
   for (int i = 0; i < size; i++)
   {
     char firstChar = fgetc(input);
-    char grade = 0;
+    float grade = 0;
 
     if (firstChar == 58)
     {
@@ -48,17 +48,18 @@ int replaceNextlinesWithCommas(const char *in, const char *out)
       fputc(firstChar, output);
       fputc(' ', output);
 
-      while (1)
-      {
-        scanf("%c", &grade);
+      scanf("%f", &grade);
+      fprintf(output, "%f", grade);
+      // while (1)
+      // {
 
-        if (grade == '\n')
-        {
-          break;
-        }
+      //   if (grade == '\n')
+      //   {
+      //     break;
+      //   }
 
-        fputc(grade, output);
-      }
+      //   fputc(grade, output);
+      // }
 
       status = 0;
     }
