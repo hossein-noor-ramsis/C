@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int replaceNextlinesWithCommas(const char *in, const char *out);
 
 int main()
 {
-  replaceNextlinesWithCommas("./input.txt", "./output.txt");
+  replaceNextlinesWithCommas("./names.txt", "./names_plus_grades.txt");
 }
 
 int replaceNextlinesWithCommas(const char *in, const char *out)
 {
   int status = 1;
-  char *buffer = ca;
+  int size = 0;
 
   FILE *input;
   FILE *output;
@@ -25,27 +25,39 @@ int replaceNextlinesWithCommas(const char *in, const char *out)
     printf("Could not open file\n");
   }
 
-  fgets(buffer, sizeof(buffer), input);
-
-  for (unsigned int i = 0; i < strlen(buffer); i++)
+  while (1)
   {
-    bool condition1 = buffer[i] == 92;
-    bool condition2 = buffer[i + 1] == 110;
-
-    bool flag = condition1 && condition2;
-
-    if (flag)
+    if (fgetc(input) == EOF)
     {
-      buffer[i] = 44;
-      buffer[i + 1] = 32;
+      break;
+    }
+
+    size++;
+  }
+
+  fseek(input, 0, SEEK_SET);
+
+  for (int i = 0; i < size; i++)
+  {
+    char firstChar = fgetc(input);
+    float grade = 0;
+
+    if (firstChar == 58)
+    {
+      scanf("%f", &grade);
+      while (getchar() != "\n")
+        ;
+
+      fputc(' ', output);
+      fputc(grade, output);
 
       status = 0;
     }
-  }
-
-  if (status == 0)
-  {
-    fprintf(output, buffer);
+    else
+    {
+      printf("%c", firstChar);
+      fputc(firstChar, output);
+    }
   }
 
   fclose(input);
