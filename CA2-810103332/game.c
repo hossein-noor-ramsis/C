@@ -204,58 +204,66 @@ int calculateScore(int board[4][4])
 int moveLeft(int board[4][4], int tempBoard[4][4])
 {
 	int flag = 0;
+	int check = 1;
 
-	for (int i = 0; i < 4; i++)
+	while (check)
 	{
-		for (int j = 0; j < 3; j++)
+		check = 0;
+
+		for (int i = 0; i < 4; i++)
 		{
-			if (board[i][j] == 0 && board[i][j + 1])
+			for (int j = 0; j < 3; j++)
 			{
-				if (flag == 0)
+				if (board[i][j] == 0 && board[i][j + 1])
 				{
-					copyBoard(board, tempBoard);
-				}
-
-				board[i][j] = board[i][j + 1];
-				board[i][j + 1] = 0;
-
-				for (int k = j; k > 0; k--)
-				{
-					if (board[i][k - 1] == 0)
+					if (flag == 0)
 					{
-						board[i][k - 1] = board[i][k];
-						board[i][k] = 0;
+						copyBoard(board, tempBoard);
 					}
-				}
 
-				flag = 1;
-			}
-		}
-	}
+					board[i][j] = board[i][j + 1];
+					board[i][j + 1] = 0;
 
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i][j + 1])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i][j + 1] = 0;
-
-				for (int k = j; k > 0; k--)
-				{
-					if (board[i][k - 1] == 0)
+					for (int k = j; k > 0; k--)
 					{
-						board[i][k - 1] = board[i][k];
-						board[i][k] = 0;
+						if (board[i][k - 1] == 0)
+						{
+							board[i][k - 1] = board[i][k];
+							board[i][k] = 0;
+						}
 					}
 
 					flag = 1;
+					check = 1;
+				}
+			}
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				if (board[i][j] == 0)
+				{
+					continue;
+				}
+
+				if (board[i][j] == board[i][j + 1])
+				{
+					board[i][j] = board[i][j] * 2;
+					board[i][j + 1] = 0;
+
+					for (int k = j; k > 0; k--)
+					{
+						if (board[i][k - 1] == 0)
+						{
+							board[i][k - 1] = board[i][k];
+							board[i][k] = 0;
+						}
+
+						flag = 1;
+						check = 1;
+					}
 				}
 			}
 		}
@@ -264,53 +272,6 @@ int moveLeft(int board[4][4], int tempBoard[4][4])
 	if (flag == 0)
 	{
 		return flag;
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				board[i][j] = board[i][j + 1];
-				board[i][j + 1] = 0;
-
-				for (int k = j; k > 0; k--)
-				{
-					if (board[i][k - 1] == 0)
-					{
-						board[i][k - 1] = board[i][k];
-						board[i][k] = 0;
-					}
-				}
-			}
-		}
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i][j + 1])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i][j + 1] = 0;
-
-				for (int k = j; k > 0; k--)
-				{
-					if (board[i][k - 1] == 0)
-					{
-						board[i][k - 1] = board[i][k];
-						board[i][k] = 0;
-					}
-				}
-			}
-		}
 	}
 
 	addRandom(board);
@@ -321,59 +282,67 @@ int moveLeft(int board[4][4], int tempBoard[4][4])
 int moveRight(int board[4][4], int tempBoard[4][4])
 {
 	int flag = 0;
+	int check = 1;
 
-	for (int i = 0; i < 4; i++)
+	while (check)
 	{
-		for (int j = 3; j > 0; j--)
+		check = 0;
+
+		for (int i = 0; i < 4; i++)
 		{
-			if (board[i][j] == 0 && board[i][j - 1])
+			for (int j = 3; j > 0; j--)
 			{
-				if (flag == 0)
+				if (board[i][j] == 0 && board[i][j - 1])
 				{
-					copyBoard(board, tempBoard);
-				}
-
-				board[i][j] = board[i][j - 1];
-				board[i][j - 1] = 0;
-
-				for (int k = j; k < 3; k++)
-				{
-					if (board[i][k + 1] == 0)
+					if (flag == 0)
 					{
-						board[i][k + 1] = board[i][k];
-						board[i][k] = 0;
+						copyBoard(board, tempBoard);
 					}
-				}
 
-				flag = 1;
+					board[i][j] = board[i][j - 1];
+					board[i][j - 1] = 0;
+
+					for (int k = j; k < 3; k++)
+					{
+						if (board[i][k + 1] == 0)
+						{
+							board[i][k + 1] = board[i][k];
+							board[i][k] = 0;
+						}
+					}
+
+					flag = 1;
+					check = 1;
+				}
 			}
 		}
-	}
 
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 3; j > 0; j--)
+		for (int i = 0; i < 4; i++)
 		{
-			if (board[i][j] == 0)
+			for (int j = 3; j > 0; j--)
 			{
-				continue;
-			}
-
-			if (board[i][j] == board[i][j - 1])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i][j - 1] = 0;
-
-				for (int k = j; k < 3; k++)
+				if (board[i][j] == 0)
 				{
-					if (board[i][k + 1] == 0)
-					{
-						board[i][k + 1] = board[i][k];
-						board[i][k] = 0;
-					}
+					continue;
 				}
 
-				flag = 1;
+				if (board[i][j] == board[i][j - 1])
+				{
+					board[i][j] = board[i][j] * 2;
+					board[i][j - 1] = 0;
+
+					for (int k = j; k < 3; k++)
+					{
+						if (board[i][k + 1] == 0)
+						{
+							board[i][k + 1] = board[i][k];
+							board[i][k] = 0;
+						}
+					}
+
+					flag = 1;
+					check = 1;
+				}
 			}
 		}
 	}
@@ -381,53 +350,6 @@ int moveRight(int board[4][4], int tempBoard[4][4])
 	if (flag == 0)
 	{
 		return flag;
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 3; j > 0; j--)
-		{
-			if (board[i][j] == 0)
-			{
-				board[i][j] = board[i][j - 1];
-				board[i][j - 1] = 0;
-
-				for (int k = j; k < 3; k++)
-				{
-					if (board[i][k + 1] == 0)
-					{
-						board[i][k + 1] = board[i][k];
-						board[i][k] = 0;
-					}
-				}
-			}
-		}
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 3; j > 0; j--)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i][j - 1])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i][j - 1] = 0;
-
-				for (int k = j; k < 3; k++)
-				{
-					if (board[i][k + 1] == 0)
-					{
-						board[i][k + 1] = board[i][k];
-						board[i][k] = 0;
-					}
-				}
-			}
-		}
 	}
 
 	addRandom(board);
@@ -438,58 +360,66 @@ int moveRight(int board[4][4], int tempBoard[4][4])
 int moveUp(int board[4][4], int tempBoard[4][4])
 {
 	int flag = 0;
+	int check = 1;
 
-	for (int i = 0; i < 3; i++)
+	while (check)
 	{
-		for (int j = 0; j < 4; j++)
+		check = 0;
+
+		for (int i = 0; i < 3; i++)
 		{
-			if (board[i][j] == 0 && board[i + 1][j])
+			for (int j = 0; j < 4; j++)
 			{
-				if (flag == 0)
+				if (board[i][j] == 0 && board[i + 1][j])
 				{
-					copyBoard(board, tempBoard);
-				}
-
-				board[i][j] = board[i + 1][j];
-				board[i + 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
-				{
-					if (board[k - 1][j] == 0)
+					if (flag == 0)
 					{
-						board[k - 1][j] = board[k][j];
-						board[k][j] = 0;
+						copyBoard(board, tempBoard);
 					}
-				}
 
-				flag = 1;
-			}
-		}
-	}
+					board[i][j] = board[i + 1][j];
+					board[i + 1][j] = 0;
 
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i + 1][j])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i + 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
-				{
-					if (board[k - 1][j] == 0)
+					for (int k = i; k > 0; k--)
 					{
-						board[k - 1][j] = board[k][j];
-						board[k][j] = 0;
+						if (board[k - 1][j] == 0)
+						{
+							board[k - 1][j] = board[k][j];
+							board[k][j] = 0;
+						}
 					}
 
 					flag = 1;
+					check = 1;
+				}
+			}
+		}
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				if (board[i][j] == 0)
+				{
+					continue;
+				}
+
+				if (board[i][j] == board[i + 1][j])
+				{
+					board[i][j] = board[i][j] * 2;
+					board[i + 1][j] = 0;
+
+					for (int k = i; k > 0; k--)
+					{
+						if (board[k - 1][j] == 0)
+						{
+							board[k - 1][j] = board[k][j];
+							board[k][j] = 0;
+						}
+
+						flag = 1;
+						check = 1;
+					}
 				}
 			}
 		}
@@ -498,53 +428,6 @@ int moveUp(int board[4][4], int tempBoard[4][4])
 	if (flag == 0)
 	{
 		return flag;
-	}
-
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				board[i][j] = board[i + 1][j];
-				board[i + 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
-				{
-					if (board[k - 1][j] == 0)
-					{
-						board[k - 1][j] = board[k][j];
-						board[k][j] = 0;
-					}
-				}
-			}
-		}
-	}
-
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i + 1][j])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i + 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
-				{
-					if (board[k - 1][j] == 0)
-					{
-						board[k - 1][j] = board[k][j];
-						board[k][j] = 0;
-					}
-				}
-			}
-		}
 	}
 
 	addRandom(board);
@@ -555,59 +438,67 @@ int moveUp(int board[4][4], int tempBoard[4][4])
 int moveDown(int board[4][4], int tempBoard[4][4])
 {
 	int flag = 0;
+	int check = 1;
 
-	for (int i = 3; i > 0; i--)
+	while (check)
 	{
-		for (int j = 0; j < 4; j++)
+		check = 0;
+
+		for (int i = 3; i > 0; i--)
 		{
-			if (board[i][j] == 0 && board[i - 1][j])
+			for (int j = 0; j < 4; j++)
 			{
-				if (flag == 0)
+				if (board[i][j] == 0 && board[i - 1][j])
 				{
-					copyBoard(board, tempBoard);
-				}
-
-				board[i][j] = board[i - 1][j];
-				board[i - 1][j] = 0;
-
-				for (int k = i; k < 3; k++)
-				{
-					if (board[k + 1][j] == 0)
+					if (flag == 0)
 					{
-						board[k + 1][j] = board[k][j];
-						board[k][j] = 0;
+						copyBoard(board, tempBoard);
 					}
-				}
 
-				flag = 1;
+					board[i][j] = board[i - 1][j];
+					board[i - 1][j] = 0;
+
+					for (int k = i; k < 3; k++)
+					{
+						if (board[k + 1][j] == 0)
+						{
+							board[k + 1][j] = board[k][j];
+							board[k][j] = 0;
+						}
+					}
+
+					flag = 1;
+					check = 1;
+				}
 			}
 		}
-	}
 
-	for (int i = 3; i > 0; i--)
-	{
-		for (int j = 0; j < 4; j++)
+		for (int i = 3; i > 0; i--)
 		{
-			if (board[i][j] == 0)
+			for (int j = 0; j < 4; j++)
 			{
-				continue;
-			}
-
-			if (board[i][j] == board[i - 1][j])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i - 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
+				if (board[i][j] == 0)
 				{
-					if (board[k + 1][j] == 0)
-					{
-						board[k + 1][j] = board[k][j];
-						board[k][j] = 0;
-					}
+					continue;
 				}
 
-				flag = 1;
+				if (board[i][j] == board[i - 1][j])
+				{
+					board[i][j] = board[i][j] * 2;
+					board[i - 1][j] = 0;
+
+					for (int k = i; k > 0; k--)
+					{
+						if (board[k + 1][j] == 0)
+						{
+							board[k + 1][j] = board[k][j];
+							board[k][j] = 0;
+						}
+					}
+
+					flag = 1;
+					check = 1;
+				}
 			}
 		}
 	}
@@ -615,53 +506,6 @@ int moveDown(int board[4][4], int tempBoard[4][4])
 	if (flag == 0)
 	{
 		return flag;
-	}
-
-	for (int i = 3; i > 0; i--)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				board[i][j] = board[i - 1][j];
-				board[i - 1][j] = 0;
-
-				for (int k = i; k < 3; k++)
-				{
-					if (board[k + 1][j] == 0)
-					{
-						board[k + 1][j] = board[k][j];
-						board[k][j] = 0;
-					}
-				}
-			}
-		}
-	}
-
-	for (int i = 3; i > 0; i--)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			if (board[i][j] == 0)
-			{
-				continue;
-			}
-
-			if (board[i][j] == board[i - 1][j])
-			{
-				board[i][j] = board[i][j] * 2;
-				board[i - 1][j] = 0;
-
-				for (int k = i; k > 0; k--)
-				{
-					if (board[k + 1][j] == 0)
-					{
-						board[k + 1][j] = board[k][j];
-						board[k][j] = 0;
-					}
-				}
-			}
-		}
 	}
 
 	addRandom(board);
