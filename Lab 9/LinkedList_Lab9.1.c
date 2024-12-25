@@ -12,13 +12,6 @@ struct student
 	std *next;
 };
 
-//
-// Insert is used to enter a new item into the stack
-// Input:
-// Output: 0 if not successful
-//			1 if successful
-//
-
 int PrintList(std *d);
 int Insert(std *d, char *name, int grade);
 
