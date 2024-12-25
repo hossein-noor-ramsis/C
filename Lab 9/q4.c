@@ -7,10 +7,7 @@ typedef struct node
   struct node *next;
 } node;
 
-node *CreateNode()
-{
-  return malloc(sizeof(node));
-}
+node *CreateNode();
 
 int main()
 {
@@ -34,4 +31,9 @@ int main()
   third_node->next = NULL;
 
   return 0;
+}
+
+node *CreateNode()
+{
+  return malloc(sizeof(node));
 }

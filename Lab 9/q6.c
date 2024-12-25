@@ -1,16 +1,14 @@
+#define NUM_OF_NODES 3
+
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_OF_NODES 3
 typedef struct node
 {
   int data;
   struct node *next;
 } node;
 
-node *CreateNode()
-{
-  return malloc(sizeof(node));
-}
+node *CreateNode();
 
 int main()
 {
@@ -33,4 +31,9 @@ int main()
   temp->next = NULL;
 
   return 0;
+}
+
+node *CreateNode()
+{
+  return malloc(sizeof(node));
 }
