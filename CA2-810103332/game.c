@@ -37,6 +37,8 @@ int main()
 
 	while (flag)
 	{
+		system("cls");
+
 		move = printBoard(board);
 
 		switch (move)
