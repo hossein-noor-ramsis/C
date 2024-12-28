@@ -13,10 +13,8 @@ int main()
   USER *usersHead = malloc(sizeof(USER));
   usersHead->next = NULL;
 
-  USER *user = malloc(sizeof(USER));
-
-  char username[32];
-  char password[32];
+  USER **user = malloc(sizeof(USER));
+  *user = NULL;
 
   while (!isExit)
   {
@@ -25,13 +23,15 @@ int main()
 
     if (strcmp(command, SIGNUP) == 0)
     {
-      printf("Username: ");
-      gets(username);
-
-      printf("Password: ");
-      gets(password);
-
-      signup(usersHead, user, username, password);
+      signup(usersHead, user);
+      // printf("user->username: %s\n", (*user)->username);
+    }
+    else if (strcmp(command, LOGIN) == 0)
+    {
+    }
+    else if (strcmp(command, LOGOUT) == 0)
+    {
+      logout(user);
     }
     else if (strcmp(command, EXIT) == 0)
     {
@@ -39,7 +39,7 @@ int main()
     }
     else
     {
-      printf("Error:Unknowncommand.\n");
+      printf("Error: Unknown command.\n");
     }
   }
 

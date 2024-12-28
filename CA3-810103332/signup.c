@@ -1,23 +1,28 @@
 #include "main.h"
 
-#define LOGIN "login"
-#define SIGNUP "signup"
-#define LOGOUT "logout"
-#define EXIT "exit"
-
-void signup(USER *usersHead, USER *user, char username[32], char password[32])
+void signup(USER *usersHead, USER **user)
 {
-  user = searchUserNode(usersHead, username);
+  char username[32];
+  char password[32];
 
-  if (user->username)
+  printf("Username: ");
+  gets(username);
+
+  printf("Password: ");
+  gets(password);
+
+  *user = searchUserNode(usersHead, username);
+
+  if (*user)
   {
     printf("Error: Username repeatedOne already exists.\n");
+
     user = NULL;
     return;
   }
 
-  user = createUserNode(usersHead, username, password);
+  *user = createUserNode(usersHead, username, password);
 
-  printf("User %s successfully registered!\n", username);
+  printf("User %s successfully registered!\n", (*user)->username);
   return;
 }

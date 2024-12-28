@@ -1,10 +1,5 @@
 #include "main.h"
 
-#define LOGIN "login"
-#define SIGNUP "signup"
-#define LOGOUT "logout"
-#define EXIT "exit"
-
 USER *createUserNode(USER *userHead, char username[32], char password[32])
 {
   USER *user = malloc(sizeof(USER));

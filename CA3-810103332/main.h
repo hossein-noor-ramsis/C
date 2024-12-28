@@ -7,3 +7,4 @@
 #include "signup.h"
 #include "searchUserNode.h"
 #include "createUserNode.h"
+#include "logout.h"

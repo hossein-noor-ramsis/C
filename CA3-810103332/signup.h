@@ -1,1 +1,1 @@
-void signup(USER *, USER *, char[32], char[32]);
+void signup(USER *, USER **);
