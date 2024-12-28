@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "main.h"
 
 int replaceNextlinesWithCommas(const char *in, const char *out);
 

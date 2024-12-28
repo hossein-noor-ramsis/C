@@ -62,7 +62,13 @@
   },
   "commentTranslate.targetLanguage": "ru",
   "files.associations": {
-    "fact.h": "c"
+    "fact.h": "c",
+    "main.h": "c",
+    "stdio.h": "c",
+    "singup.h": "c",
+    "createusernode.h": "c",
+    "signup.h": "c",
+    "structs.h": "c"
   },
   "cSpell.words": [
     "Bactery",
