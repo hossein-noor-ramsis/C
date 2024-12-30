@@ -10,3 +10,6 @@
 #include "signup.h"
 #include "login.h"
 #include "logout.h"
+
+#include "newChat.h"
+#include "searchChatNode.h"

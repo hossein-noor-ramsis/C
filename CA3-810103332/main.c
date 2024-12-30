@@ -4,6 +4,7 @@
 #define SIGNUP "signup"
 #define LOGOUT "logout"
 #define EXIT "exit"
+#define NEWCHAT "newChat"
 
 int main()
 {
@@ -12,8 +13,7 @@ int main()
 
   SYSTEM *System = malloc(sizeof(SYSTEM));
 
-  
-  System->users->next = NULL;
+    System->users->next = NULL;
 
   USER **user = malloc(sizeof(USER));
   *user = NULL;
@@ -34,6 +34,10 @@ int main()
     else if (strcmp(command, LOGOUT) == 0)
     {
       logout(System);
+    }
+    else if (strcmp(command, NEWCHAT))
+    {
+      newChat(System);
     }
     else if (strcmp(command, EXIT) == 0)
     {
