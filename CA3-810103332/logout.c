@@ -1,15 +1,15 @@
 #include "main.h"
 
-void logout(USER **user)
+void logout(SYSTEM *System)
 {
-  if (user)
+  if (System->user)
   {
-    printf("user %s logged out successfully!\n", (*user)->username);
-    
-    user = NULL;
+    printf("user %s logged out successfully!\n", System->user->username);
+
+    System->user = NULL;
     return;
   }
 
-  printf("Error: No user is currently logged in.\n");  
+  printf("Error: No user is currently logged in.\n");
   return;
 }

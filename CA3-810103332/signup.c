@@ -1,9 +1,9 @@
 #include "main.h"
 
-void signup(USER *usersHead, USER **user)
+void signup(SYSTEM *System)
 {
-  char username[32];
-  char password[32];
+  char username[50];
+  char password[50];
 
   printf("Username: ");
   gets(username);
@@ -11,18 +11,18 @@ void signup(USER *usersHead, USER **user)
   printf("Password: ");
   gets(password);
 
-  *user = searchUserNode(usersHead, username);
+  System->user = searchUserNode(System, username);
 
-  if (*user)
+  if (System->user)
   {
     printf("Error: Username repeatedOne already exists.\n");
 
-    user = NULL;
+    System->user = NULL;
     return;
   }
 
-  *user = createUserNode(usersHead, username, password);
+  System->user = createUserNode(System, username, password);
 
-  printf("User %s successfully registered!\n", (*user)->username);
+  printf("User %s successfully registered!\n", username);
   return;
 }

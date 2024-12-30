@@ -1,8 +1,8 @@
 #include "main.h"
 
-USER *searchUserNode(USER *usersHead, char username[32])
+USER *searchUserNode(SYSTEM *System, char username[50])
 {
-  USER *temp = usersHead->next;
+  USER *temp = System->users->next;
 
   while (temp != NULL)
   {

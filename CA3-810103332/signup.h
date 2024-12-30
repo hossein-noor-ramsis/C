@@ -1,1 +1,1 @@
-void signup(USER *, USER **);
+void signup(SYSTEM *);

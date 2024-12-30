@@ -4,7 +4,9 @@
 
 #include "structs.h"
 
-#include "signup.h"
 #include "searchUserNode.h"
 #include "createUserNode.h"
+
+#include "signup.h"
+#include "login.h"
 #include "logout.h"

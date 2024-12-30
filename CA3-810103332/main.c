@@ -10,8 +10,10 @@ int main()
   int isExit = 0;
   char command[10];
 
-  USER *usersHead = malloc(sizeof(USER));
-  usersHead->next = NULL;
+  SYSTEM *System = malloc(sizeof(SYSTEM));
+
+  
+  System->users->next = NULL;
 
   USER **user = malloc(sizeof(USER));
   *user = NULL;
@@ -23,15 +25,15 @@ int main()
 
     if (strcmp(command, SIGNUP) == 0)
     {
-      signup(usersHead, user);
-      // printf("user->username: %s\n", (*user)->username);
+      signup(System);
     }
     else if (strcmp(command, LOGIN) == 0)
     {
+      login(System);
     }
     else if (strcmp(command, LOGOUT) == 0)
     {
-      logout(user);
+      logout(System);
     }
     else if (strcmp(command, EXIT) == 0)
     {
