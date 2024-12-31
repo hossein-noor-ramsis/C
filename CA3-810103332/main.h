@@ -4,13 +4,13 @@
 
 #include "structs.h"
 
-#include "./user/searchUserNode.h"
-#include "./user/createUserNode.h"
+#include "./includes/searchUserNode.h"
+#include "./includes/createUserNode.h"
 
-#include "./auth/signup.h"
-#include "./auth/login.h"
-#include "./auth/logout.h"
+#include "./includes/signup.h"
+#include "./includes/login.h"
+#include "./includes/logout.h"
 
-#include "./chat/newChat.h"
-#include "./chat/searchChatNode.h"
-#include "./chat/createChatNode.h"
+#include "./includes/newChat.h"
+#include "./includes/searchChatNode.h"
+#include "./includes/createChatNode.h"

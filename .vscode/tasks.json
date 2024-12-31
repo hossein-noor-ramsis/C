@@ -17,7 +17,7 @@
         "-Wall",
         "-Wextra",
         "-g",
-        "${workspaceFolder}/CA3-810103332/**/*.c", // Include all .c files in the workspace
+        "${workspaceFolder}/**/*.c", // Include all .c files in the workspace
         "-I${workspaceFolder}/include", // Include path for headers
         "-o",
         "${workspaceFolder}/output/main.exe"

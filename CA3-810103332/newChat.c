@@ -1,11 +1,9 @@
 #include "main.h"
-#include "newChat.h"
 
 void newChat(SYSTEM *System)
 {
   char chatName[50];
   char selectedUsername[50];
-  CHAT_NODE *chat;
 
   printf("Enter chat name: ");
   gets(chatName);
@@ -25,12 +23,14 @@ void newChat(SYSTEM *System)
     return;
   }
 
-  if (strcmp(chatName, searchChatNode(chatName)->name) == 0)
+  if (strcmp(chatName, searchChatNode(System, chatName)->name) == 0)
   {
-    printf("Error: Chat with name %s already exists.", chatName);
+    printf("Error: Chat with name %s already exists.\n", chatName);
     return;
   }
 
-  chat = createChatNode();
-  printf("Chat with the name %s created between %s and %s.", chatName, System->user->username, selectedUsername);
+  createChatNode(System, chatName, selectedUsername);
+  printf("Chat with the name %s created between %s and %s.\n", chatName, System->user->username, selectedUsername);
+  
+  return;
 }

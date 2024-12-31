@@ -1,6 +1,6 @@
 #include "main.h"
 
-CHAT_NODE *createChatNode(SYSTEM *System, char chatName[50], char selectedUser[50])
+CHAT_NODE *createChatNode(SYSTEM *System, char chatName[50], char selectedUsername[50])
 {
   MESSAGE_NODE *messages = malloc(sizeof(MESSAGE_NODE));
   CHAT_NODE *temp = System->user->chats;
@@ -18,7 +18,7 @@ CHAT_NODE *createChatNode(SYSTEM *System, char chatName[50], char selectedUser[5
 
   strcpy(chat->name, chatName);
   strcpy(chat->users[0], System->user->username);
-  strcpy(chat->users[0], selectedUser);
+  strcpy(chat->users[0], selectedUsername);
   chat->next = NULL;
 
   return chat;
