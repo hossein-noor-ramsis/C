@@ -11,9 +11,11 @@ int main()
   int isExit = 0;
   char command[16];
 
+  // users linked list
   USER_NODE *users = malloc(sizeof(USER_NODE));
   users->next = NULL;
 
+  // system
   SYSTEM *System = malloc(sizeof(SYSTEM));
   System->users = users;
   System->user = NULL;

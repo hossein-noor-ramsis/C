@@ -5,6 +5,7 @@ void newChat(SYSTEM *System)
 {
   char chatName[50];
   char selectedUsername[50];
+  CHAT_NODE *chat;
 
   printf("Enter chat name: ");
   gets(chatName);
@@ -23,4 +24,13 @@ void newChat(SYSTEM *System)
     printf("Error:You cannot create a chat with yourself.\n");
     return;
   }
+
+  if (strcmp(chatName, searchChatNode(chatName)->name) == 0)
+  {
+    printf("Error: Chat with name %s already exists.", chatName);
+    return;
+  }
+
+  chat = createChatNode();
+  printf("Chat with the name %s created between %s and %s.", chatName, System->user->username, selectedUsername);
 }

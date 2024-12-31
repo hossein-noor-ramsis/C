@@ -13,7 +13,6 @@ void signup(SYSTEM *System)
   gets(password);
 
   user = searchUserNode(System, username);
-  // printf("1\n");
 
   if (strcmp(user->username, username) == 0)
   {

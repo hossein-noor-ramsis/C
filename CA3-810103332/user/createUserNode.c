@@ -5,6 +5,9 @@ USER_NODE *createUserNode(SYSTEM *System, char username[50], char password[50])
   USER_NODE *user = malloc(sizeof(USER_NODE));
   USER_NODE *temp = System->users;
 
+  user->chats = malloc(sizeof(CHAT_NODE));
+  chats->next = NULL;
+
   while (temp->next != NULL)
   {
     temp = temp->next;

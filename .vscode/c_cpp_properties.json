@@ -3,15 +3,14 @@
     {
       "name": "windows-gcc-x86",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/CA3-810103332/**/*.c"
       ],
       "compilerPath": "C:/MinGW/bin/gcc.exe",
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "windows-gcc-x86",
-      "compilerArgs": [
-        ""
-      ]
+      "compilerArgs": [""]
     }
   ],
   "version": 4
