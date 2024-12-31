@@ -1,1 +1,1 @@
-USER *searchUserNode(SYSTEM *System, char username[50]);
+USER_NODE *searchUserNode(SYSTEM *System, char username[50]);

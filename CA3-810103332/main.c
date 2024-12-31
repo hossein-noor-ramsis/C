@@ -4,19 +4,20 @@
 #define SIGNUP "signup"
 #define LOGOUT "logout"
 #define EXIT "exit"
-#define NEWCHAT "newChat"
+#define NEW_CHAT "newChat"
 
 int main()
 {
   int isExit = 0;
-  char command[10];
+  char command[16];
+
+  USER_NODE *users = malloc(sizeof(USER_NODE));
+  users->next = NULL;
 
   SYSTEM *System = malloc(sizeof(SYSTEM));
-
-    System->users->next = NULL;
-
-  USER **user = malloc(sizeof(USER));
-  *user = NULL;
+  System->users = users;
+  System->user = NULL;
+  System->chat = NULL;
 
   while (!isExit)
   {
@@ -35,7 +36,7 @@ int main()
     {
       logout(System);
     }
-    else if (strcmp(command, NEWCHAT))
+    else if (strcmp(command, NEW_CHAT) == 0)
     {
       newChat(System);
     }

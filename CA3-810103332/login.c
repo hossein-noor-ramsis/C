@@ -4,6 +4,7 @@ void login(SYSTEM *System)
 {
   char username[50];
   char password[50];
+  USER_NODE *user = malloc(sizeof(USER_NODE));
 
   printf("Username: ");
   gets(username);
@@ -14,18 +15,20 @@ void login(SYSTEM *System)
   if (System->user != NULL)
   {
     printf("Error: There is an open session, please logout first.\n");
+
     return;
   }
 
-  System->user = searchUserNode(System, username);
+  user = searchUserNode(System, username);
 
-  if (strcmp(System->user->password, password) != 0)
+  if (strcmp(user->password, password) != 0)
   {
     printf("Error: Invalid username or password.\n");
 
-    System->user = NULL;
     return;
   }
+
+  System->user = user;
 
   printf("User %s logged in successfully!\n", username);
   return;

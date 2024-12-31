@@ -4,6 +4,7 @@ void signup(SYSTEM *System)
 {
   char username[50];
   char password[50];
+  USER_NODE *user = malloc(sizeof(USER_NODE));
 
   printf("Username: ");
   gets(username);
@@ -11,13 +12,13 @@ void signup(SYSTEM *System)
   printf("Password: ");
   gets(password);
 
-  System->user = searchUserNode(System, username);
+  user = searchUserNode(System, username);
+  // printf("1\n");
 
-  if (System->user)
+  if (strcmp(user->username, username) == 0)
   {
     printf("Error: Username repeatedOne already exists.\n");
 
-    System->user = NULL;
     return;
   }
 

@@ -1,10 +1,10 @@
 #include "main.h"
 
-USER *searchUserNode(SYSTEM *System, char chatName[50])
+CHAT_NODE *searchChatNode(SYSTEM *System, char chatName[50])
 {
-  USER *temp = System->user->chats->name;
+  CHAT_NODE *temp = System->user->chats;
 
-  while (temp != NULL)
+  while (temp->next != NULL)
   {
     if (strcmp(temp->name, chatName) == 0)
     {

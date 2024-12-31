@@ -1,10 +1,10 @@
 #include "main.h"
 
-USER *searchUserNode(SYSTEM *System, char username[50])
+USER_NODE *searchUserNode(SYSTEM *System, char username[50])
 {
-  USER *temp = System->users->next;
+  USER_NODE *temp = System->users;
 
-  while (temp != NULL)
+  while (temp->next != NULL)
   {
     if (strcmp(temp->username, username) == 0)
     {

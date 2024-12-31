@@ -30,7 +30,6 @@ int main()
 	char move;
 
 	int board[4][4] = {{0}};
-
 	int tempBoard[4][4] = {{0}};
 
 	initializeBoard(board);
@@ -535,8 +534,6 @@ void copyBoard(int boardOne[4][4], int boardTwo[4][4])
 			boardTwo[i][j] = boardOne[i][j];
 		}
 	}
-
-	// TODO: save the prev board in another temp and check if they are same so
 }
 
 // game status check funcs

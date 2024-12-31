@@ -68,11 +68,13 @@
     "singup.h": "c",
     "createusernode.h": "c",
     "signup.h": "c",
-    "structs.h": "c"
+    "structs.h": "c",
+    "searchchatnode.h": "c"
   },
   "cSpell.words": [
     "Bactery",
     "Blookazari",
+    "CHATNODE",
     "Fariba",
     "Golzari",
     "Hadian",

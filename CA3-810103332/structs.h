@@ -1,32 +1,33 @@
-typedef struct USER
+typedef struct USER_NODE
 {
   char username[50];
   char password[50];
-  struct CHAT *chats;
+  struct CHAT_NODE *chats;
 
-  struct USER *next;
-} USER;
+  struct USER_NODE *next;
+} USER_NODE;
 
-typedef struct MESSAGE
+typedef struct MESSAGE_NODE
 {
-  USER author;
+  struct USER_NODE *author;
+  struct CHAT_NODE *chat;
   char content[250];
 
-  struct MESSAGE *next;
-} MESSAGE;
+  struct MESSAGE_NODE *next;
+} MESSAGE_NODE;
 
-typedef struct CHAT
+typedef struct CHAT_NODE
 {
   char name[50];
   char users[2][50];
-  MESSAGE *messages;
+  MESSAGE_NODE *messages;
 
-  struct CHAT *next;
-} CHAT;
+  struct CHAT_NODE *next;
+} CHAT_NODE;
 
 typedef struct SYSTEM
 {
-  USER *users;
-  USER *user;
-  CHAT *chat;
+  USER_NODE *user;
+  CHAT_NODE *chat;
+  USER_NODE *users;
 } SYSTEM;
