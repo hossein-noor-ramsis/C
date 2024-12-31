@@ -1,0 +1,2 @@
+Hello World!! we love coding!! to work with FILES in c!
+Now we know how to use files in C :)

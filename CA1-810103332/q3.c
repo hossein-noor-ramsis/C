@@ -10,6 +10,7 @@ int main()
 
   /* input */
   scanf("%c %d", &operation, &amount);
+  // printf("");
 
   if (operation == '*')
   {
@@ -17,10 +18,10 @@ int main()
 
     for (int i = 0; i < amount; i++)
     {
-      int chach;
-      scanf("%d", &chach);
+      int temp;
+      scanf("%d", &temp);
 
-      result *= chach;
+      result *= temp;
     }
 
     /* output */
@@ -34,10 +35,10 @@ int main()
 
     for (int i = 0; i < amount; i++)
     {
-      int chach;
-      scanf("%d", &chach);
+      int temp;
+      scanf("%d", &temp);
 
-      result += chach;
+      result += temp;
     }
 
     /* output */
@@ -46,6 +47,6 @@ int main()
   }
 
   /* output */
-  printf("Wrong symlbol\n");
+  printf("Wrong Symbol\n");
   return 0;
 }

@@ -1,0 +1,1 @@
+void newChat(SYSTEM *System);
