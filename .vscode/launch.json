@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Hossein/Desktop/Folders/Programming/PC/C/CA3-810103332",
-      "program": "c:/Users/Hossein/Desktop/Folders/Programming/PC/C/CA3-810103332/build/Release/outRelease",
+      "cwd": "c:/Users/Hossein/Desktop/Folders/Programming/PC/C/CA3-810103332/src",
+      "program": "c:/Users/Hossein/Desktop/Folders/Programming/PC/C/CA3-810103332/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

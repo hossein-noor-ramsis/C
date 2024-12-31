@@ -1,4 +1,4 @@
-#include "main.h"
+#include "../includes/main.h"
 
 USER_NODE *searchUserNode(SYSTEM *System, char username[50])
 {
