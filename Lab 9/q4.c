@@ -12,8 +12,8 @@ node *CreateNode();
 int main()
 {
   node *first_node, *second_node, *third_node, *head;
+  
   // Allocating memory
-
   head = CreateNode();
   first_node = CreateNode();
   second_node = CreateNode();

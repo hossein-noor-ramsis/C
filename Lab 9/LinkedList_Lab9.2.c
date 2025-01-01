@@ -47,6 +47,8 @@ int PrintList(std *d)
 int Remove(std *d, char *name)
 {
 	std *prevNode, *curNode;
+	//* curNode should to be pointer
+
 	prevNode = d;
 
 	while (prevNode->next != NULL)
@@ -59,6 +61,7 @@ int Remove(std *d, char *name)
 		}
 		prevNode = curNode;
 	}
+
 	printf("No such a name found\n");
 	return 1;
 }

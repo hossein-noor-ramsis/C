@@ -28,7 +28,9 @@ int main()
     temp = temp->next;
   }
 
+  printf("temp->next: %p\n", temp->next);
   temp->next = NULL;
+  printf("temp->next: %p\n", temp->next);
 
   return 0;
 }

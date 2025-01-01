@@ -19,6 +19,7 @@ int main()
 {
 	char names[3][20] = {"Golzari", "Hadian", "Blookazari"};
 
+	//* dummy should to be pointer
 	std *dummy = malloc(sizeof(std)); // Dummy node for the start of the linked list
 	dummy->next = NULL;
 
@@ -60,6 +61,7 @@ int Insert(std *d, char *name, int grade)
 int PrintList(std *d)
 {
 	// Print the list until reaching the last node
+	//* convert d to d->next
 	while (d->next != NULL)
 	{
 		d = d->next;

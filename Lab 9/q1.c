@@ -10,6 +10,7 @@ typedef struct information
 int main()
 {
   information *person_1 = (information *)malloc(sizeof(information));
+  //* you need to get memory from the heap
 
   printf("Please enter weight : \n");
   scanf("%f", &person_1->weight);

@@ -10,8 +10,8 @@ typedef struct node
 int main()
 {
   node *first_node, *second_node, *third_node, *head;
+  
   // Allocating memory
-
   head = malloc(sizeof(node));
   first_node = malloc(sizeof(node));
   second_node = malloc(sizeof(node));
