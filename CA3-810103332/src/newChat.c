@@ -1,9 +1,12 @@
 #include "../includes/main.h"
 
-void newChat(SYSTEM *System)
+int newChat(SYSTEM *System)
 {
   char chatName[50];
   char selectedUsername[50];
+
+  USER_NODE *selectedUser;
+  CHAT_NODE *temp;
 
   printf("Enter chat name: ");
   gets(chatName);
@@ -14,23 +17,37 @@ void newChat(SYSTEM *System)
   if (System->user == NULL)
   {
     printf("Error: No user is currently logged in\n");
-    return;
+    return 1;
   }
 
   if (strcmp(selectedUsername, System->user->username) == 0)
   {
     printf("Error:You cannot create a chat with yourself.\n");
-    return;
+    return 1;
   }
 
-  if (strcmp(chatName, searchChatNode(System, chatName)->name) == 0)
+  if (strcmp(chatName, searchChatNode(System, System->user->username, chatName)->name) == 0)
   {
     printf("Error: Chat with name %s already exists.\n", chatName);
-    return;
+    return 1;
   }
 
-  createChatNode(System, chatName, selectedUsername);
+  temp = System->user->chats;
+  while (temp->next != NULL)
+  {
+    temp = temp->next;
+  }
+  temp->next = createChatNode(System, chatName, selectedUsername);
+
+  selectedUser = searchUserNode(System, selectedUsername);
+  temp = selectedUser->chats;
+  while (temp->next != NULL)
+  {
+    temp = temp->next;
+  }
+  temp->next = createChatNode(System, chatName, selectedUsername);
+
   printf("Chat with the name %s created between %s and %s.\n", chatName, System->user->username, selectedUsername);
-  
-  return;
+
+  return 0;
 }

@@ -16,4 +16,8 @@
 #include "createChatNode.h"
 #include "selectChat.h"
 #include "showChat.h"
+
 #include "sendMessage.h"
+#include "createMessageNode.h"
+
+#include "loadUsers.h"

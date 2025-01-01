@@ -1,4 +1,4 @@
-#include "main.h"
+#include "../includes/main.h"
 
 int showChat(SYSTEM *System)
 {
@@ -6,7 +6,7 @@ int showChat(SYSTEM *System)
 
   if (System->chat == NULL)
   {
-    printf("Error: No char selected. Please select a chat first.\n");
+    printf("Error: No chat selected. Please select a chat first.\n");
     return 1;
   }
 
@@ -15,10 +15,10 @@ int showChat(SYSTEM *System)
 
   while (temp->next != NULL)
   {
-    printf("%s: ", System->chat->messages->author);
-    printf("%s\n", temp->content);
-
     temp = temp->next;
+
+    printf("%s: ", temp->author->username);
+    printf("%s\n", temp->content);
   }
 
   return 0;

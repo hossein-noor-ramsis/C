@@ -1,1 +1,1 @@
-void selectChat(SYSTEM *System);
+int selectChat(SYSTEM *System);

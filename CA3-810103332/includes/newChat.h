@@ -1,1 +1,1 @@
-void newChat(SYSTEM *System);
+int newChat(SYSTEM *System);

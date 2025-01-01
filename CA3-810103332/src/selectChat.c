@@ -1,6 +1,6 @@
 #include "../includes/main.h"
 
-void selectChat(SYSTEM *System)
+int selectChat(SYSTEM *System)
 {
   char selectedChatName[50];
   CHAT_NODE *chat;
@@ -11,18 +11,18 @@ void selectChat(SYSTEM *System)
   if (System->user == NULL)
   {
     printf("Error: No user is currently logged in\n");
-    return;
+    return 1;
   }
 
-  chat = searchChatNode(System, selectedChatName);
+  chat = searchChatNode(System, System->user->username, selectedChatName);
 
   if (strcmp(selectedChatName, chat->name) != 0)
   {
     printf("Error: Chat %s not found for user %s\n", selectedChatName, System->user->username);
-    return;
+    return 1;
   }
 
   System->chat = chat;
   printf("Chat %s has been selected as the current chat.\n", selectedChatName);
-  return;
+  return 0;
 }

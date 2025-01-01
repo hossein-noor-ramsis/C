@@ -1,6 +1,6 @@
 #include "../includes/main.h"
 
-void login(SYSTEM *System)
+int login(SYSTEM *System)
 {
   char username[50];
   char password[50];
@@ -16,7 +16,7 @@ void login(SYSTEM *System)
   {
     printf("Error: There is an open session, please logout first.\n");
 
-    return;
+    return 1;
   }
 
   user = searchUserNode(System, username);
@@ -25,11 +25,11 @@ void login(SYSTEM *System)
   {
     printf("Error: Invalid username or password.\n");
 
-    return;
+    return 1;
   }
 
   System->user = user;
 
   printf("User %s logged in successfully!\n", username);
-  return;
+  return 0;
 }

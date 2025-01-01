@@ -1,1 +1,1 @@
-void sendMessage(SYSTEM *system);
+int sendMessage(SYSTEM *system);

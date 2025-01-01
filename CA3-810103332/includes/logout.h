@@ -1,1 +1,1 @@
-void logout(SYSTEM *System);
+int logout(SYSTEM *System);

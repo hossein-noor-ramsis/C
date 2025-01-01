@@ -1,6 +1,6 @@
 #include "../includes/main.h"
 
-void signup(SYSTEM *System)
+int signup(SYSTEM *System)
 {
   char username[50];
   char password[50];
@@ -18,11 +18,11 @@ void signup(SYSTEM *System)
   {
     printf("Error: Username repeatedOne already exists.\n");
 
-    return;
+    return 1;
   }
 
   System->user = createUserNode(System, username, password);
 
   printf("User %s successfully registered!\n", username);
-  return;
+  return 0;
 }

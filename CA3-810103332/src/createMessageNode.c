@@ -1,24 +1,20 @@
 #include "../includes/main.h"
 
-CHAT_NODE *createMessageNode(SYSTEM *System, char message[256])
+MESSAGE_NODE *createMessageNode(SYSTEM *System, char messageContent[256])
 {
-  USER_NODE *user = malloc(sizeof(USER_NODE));
-  USER_NODE *temp = System->users;
+  MESSAGE_NODE *message = malloc(sizeof(MESSAGE_NODE));
+  message->next = NULL;
+  message->author = System->user;
+  message->chat = System->chat;
+  strcpy(message->content, messageContent);
 
-  CHAT_NODE *chats = malloc(sizeof(CHAT_NODE));
-  chats->next = NULL;
-  user->chats = chats;
+  MESSAGE_NODE *temp = System->chat->messages;
 
   while (temp->next != NULL)
   {
     temp = temp->next;
   }
 
-  temp->next = user;
-
-  strcpy(user->username, username);
-  strcpy(user->password, password);
-  user->next = NULL;
-
-  return user;
+  temp->next = message;
+  return message;
 }

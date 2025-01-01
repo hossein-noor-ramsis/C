@@ -1,1 +1,1 @@
-void login(SYSTEM *System);
+int login(SYSTEM *System);

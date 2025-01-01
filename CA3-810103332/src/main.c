@@ -58,11 +58,11 @@ int main()
     }
     else if (strcmp(command, SEND_MESSAGE) == 0)
     {
-      /* code */
+      sendMessage(System);
     }
     else if (strcmp(command, LOAD_USERS) == 0)
     {
-      /* code */
+      loadUsers(System);
     }
     else if (strcmp(command, EXIT) == 0)
     {

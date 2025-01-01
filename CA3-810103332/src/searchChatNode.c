@@ -1,8 +1,9 @@
 #include "../includes/main.h"
 
-CHAT_NODE *searchChatNode(SYSTEM *System, char chatName[50])
+CHAT_NODE *searchChatNode(SYSTEM *System, char *username, char chatName[50])
 {
-  CHAT_NODE *temp = System->user->chats;
+  USER_NODE *selectedUser = searchUserNode(System, username);
+  CHAT_NODE *temp = selectedUser->chats;
 
   while (temp->next != NULL)
   {

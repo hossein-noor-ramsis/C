@@ -38,10 +38,7 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": [
-    "*",
-    "**/*"
-  ],
+  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
@@ -61,12 +58,11 @@
     "selectchat.h": "c",
     "searchusernode.h": "c",
     "signup.h": "c",
-    "newchat.h": "c"
+    "newchat.h": "c",
+    "createmessagenode.h": "c",
+    "loadusers.h": "c",
+    "searchchatnode.h": "c"
   },
   "commentTranslate.targetLanguage": "ru",
-  "cSpell.words": [
-    "Blookazari",
-    "Golzari",
-    "Hadian"
-  ]
+  "cSpell.words": ["Blookazari", "Golzari", "Hadian"]
 }
