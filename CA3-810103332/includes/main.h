@@ -15,3 +15,5 @@
 #include "searchChatNode.h"
 #include "createChatNode.h"
 #include "selectChat.h"
+#include "showChat.h"
+#include "sendMessage.h"

@@ -1,0 +1,1 @@
+int showChat(SYSTEM *System);

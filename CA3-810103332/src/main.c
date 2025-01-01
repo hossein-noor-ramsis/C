@@ -7,8 +7,8 @@
 
 #define NEW_CHAT "newChat"
 #define SELECT_CHAT "selectChat"
-#define SEND_MESSAGE_CHAT "sendMessage"
 #define SHOW_CHAT "showChat"
+#define SEND_MESSAGE "sendMessage"
 
 #define LOAD_USERS "loadUsers"
 
@@ -52,11 +52,11 @@ int main()
     {
       selectChat(System);
     }
-    else if (strcmp(command, SEND_MESSAGE_CHAT) == 0)
-    {
-      /* code */
-    }
     else if (strcmp(command, SHOW_CHAT) == 0)
+    {
+      showChat(System);
+    }
+    else if (strcmp(command, SEND_MESSAGE) == 0)
     {
       /* code */
     }
