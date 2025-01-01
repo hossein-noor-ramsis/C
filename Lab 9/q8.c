@@ -3,6 +3,7 @@
 #define SIZE 4
 #define POSITION 3
 #define VALUE 55
+
 int main()
 {
   int *array;

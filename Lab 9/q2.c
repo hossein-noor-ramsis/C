@@ -40,7 +40,7 @@ void printInformation(information *person_ptr)
   {
     printf("participant %d's information :\n", i + 1);
 
-    printf("weight : % f\n", person_ptr[i].weight);
+    printf("weight : % f\n", (person_ptr + i)->weight);
     printf("height : % f\n", person_ptr[i].height);
   }
 }

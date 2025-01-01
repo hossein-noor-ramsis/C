@@ -28,9 +28,14 @@ int main()
     temp = temp->next;
   }
 
-  printf("temp->next: %p\n", temp->next);
-  temp->next = NULL;
-  printf("temp->next: %p\n", temp->next);
+  temp = head;
+  for (int i = 0; i < NUM_OF_NODES; i++)
+  {
+    printf("temp->next: %p\n", temp->next);
+    printf("temp->next: %p\n", temp->next);
+
+    temp = temp->next;
+  }
 
   return 0;
 }

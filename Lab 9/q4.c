@@ -30,6 +30,8 @@ int main()
   second_node->next = third_node;
   third_node->next = NULL;
 
+  printf("head: %d", head->next->next->data);
+
   return 0;
 }
 
