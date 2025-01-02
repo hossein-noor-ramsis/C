@@ -9,7 +9,7 @@ int sendMessage(SYSTEM *System)
 
   if (System->chat == NULL)
   {
-    printf("Error: No char selected. please select a chat\n");
+    printf("Error: No chat selected. please select a chat\n");
     return 1;
   }
 
@@ -26,6 +26,9 @@ int sendMessage(SYSTEM *System)
   printf("Enter message: ");
   gets(messageContent);
 
+  //TODO: Tony and Eric have different linked list of chats 
+  //TODO: Tony and Eric dont have a different linked list of message for each chat
+
   temp = System->chat->messages;
   while (temp->next != NULL)
   {
@@ -39,5 +42,6 @@ int sendMessage(SYSTEM *System)
     temp = temp->next;
   }
   temp->next = createMessageNode(System, messageContent);
+
   return 0;
 }

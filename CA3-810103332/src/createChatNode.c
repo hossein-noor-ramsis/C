@@ -25,7 +25,7 @@ CHAT_NODE *createChatNode(SYSTEM *System, char chatName[50], char selectedUserna
 
   strcpy(chat->name, chatName);
   strcpy(chat->users[0], System->user->username);
-  strcpy(chat->users[0], selectedUsername);
+  strcpy(chat->users[1], selectedUsername);
   chat->next = NULL;
 
   return chat;

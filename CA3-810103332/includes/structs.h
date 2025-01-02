@@ -11,7 +11,7 @@ typedef struct MESSAGE_NODE
 {
   struct USER_NODE *author;
   struct CHAT_NODE *chat;
-  char content[250];
+  char content[256];
 
   struct MESSAGE_NODE *next;
 } MESSAGE_NODE;

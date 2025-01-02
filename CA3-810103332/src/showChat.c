@@ -10,15 +10,15 @@ int showChat(SYSTEM *System)
     return 1;
   }
 
-  temp = System->chat->messages;
+  temp = System->chat->messages->next;
   printf("Messages in Chat '%s':\n", System->chat->name);
 
   while (temp->next != NULL)
   {
-    temp = temp->next;
-
     printf("%s: ", temp->author->username);
     printf("%s\n", temp->content);
+
+    temp = temp->next;
   }
 
   return 0;
