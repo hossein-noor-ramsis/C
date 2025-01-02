@@ -19,7 +19,13 @@ int newChat(SYSTEM *System)
 
   if (strcmp(selectedUsername, System->user->username) == 0)
   {
-    printf("Error:You cannot create a chat with yourself.\n");
+    printf("Error: You cannot create a chat with yourself.\n");
+    return 1;
+  }
+
+  if (strcmp(selectedUsername, searchUserNode(System, selectedUsername)->username) != 0)
+  {
+    printf("Error: User %s not found.\n", selectedUsername);
     return 1;
   }
 
