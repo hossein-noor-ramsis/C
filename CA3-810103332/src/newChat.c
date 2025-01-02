@@ -5,9 +5,6 @@ int newChat(SYSTEM *System)
   char chatName[50];
   char selectedUsername[50];
 
-  USER_NODE *selectedUser;
-  CHAT_NODE *temp;
-
   printf("Enter chat name: ");
   gets(chatName);
 
@@ -32,20 +29,7 @@ int newChat(SYSTEM *System)
     return 1;
   }
 
-  temp = System->user->chats;
-  while (temp->next != NULL)
-  {
-    temp = temp->next;
-  }
-  temp->next = createChatNode(System, chatName, selectedUsername);
-
-  selectedUser = searchUserNode(System, selectedUsername);
-  temp = selectedUser->chats;
-  while (temp->next != NULL)
-  {
-    temp = temp->next;
-  }
-  temp->next = createChatNode(System, chatName, selectedUsername);
+  createChatNode(System, selectedUsername, chatName);
 
   printf("Chat with the name %s created between %s and %s.\n", chatName, System->user->username, selectedUsername);
 

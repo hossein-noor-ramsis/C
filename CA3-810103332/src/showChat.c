@@ -13,7 +13,7 @@ int showChat(SYSTEM *System)
   temp = System->chat->messages->next;
   printf("Messages in Chat '%s':\n", System->chat->name);
 
-  while (temp->next != NULL)
+  while (temp != NULL)
   {
     printf("%s: ", temp->author->username);
     printf("%s\n", temp->content);

@@ -1,32 +1,52 @@
 #include "../includes/main.h"
 
-CHAT_NODE *createChatNode(SYSTEM *System, char chatName[50], char selectedUsername[50])
+CHAT_NODE *createChatNode(SYSTEM *System, char selectedUsername[50], char chatName[50])
 {
-  MESSAGE_NODE *messages = malloc(sizeof(MESSAGE_NODE));
-  CHAT_NODE *userOne = System->user->chats;
-  CHAT_NODE *userTwo = searchUserNode(System, selectedUsername)->chats;
+  USER_NODE *user;
 
-  CHAT_NODE *chat = malloc(sizeof(CHAT_NODE));
-  chat->next = NULL;
-  chat->messages = messages;
+  CHAT_NODE *temp;
+  CHAT_NODE *chatOne = malloc(sizeof(CHAT_NODE));
+  CHAT_NODE *chatTwo = malloc(sizeof(CHAT_NODE));
 
-  while (userOne->next != NULL)
+  MESSAGE_NODE *messages;
+
+  // create the chat for the user 1
+  user = System->user;
+  temp = user->chats;
+
+  while (temp->next != NULL)
   {
-    userOne = userOne->next;
+    temp = temp->next;
   }
+  temp->next = chatOne;
 
-  while (userTwo->next != NULL)
+  messages = malloc(sizeof(MESSAGE_NODE));
+  messages->next = NULL;
+  chatOne->messages = messages;
+
+  strcpy(chatOne->name, chatName);
+  strcpy(chatOne->users[0], System->user->username);
+  strcpy(chatOne->users[1], selectedUsername);
+  chatOne->next = NULL;
+
+  // create the chat for the user 2
+  user = searchUserNode(System, selectedUsername);
+  temp = user->chats;
+
+  while (temp->next != NULL)
   {
-    userTwo = userTwo->next;
+    temp = temp->next;
   }
+  temp->next = chatTwo;
 
-  userOne->next = chat;
-  userTwo->next = chat;
+  messages = malloc(sizeof(MESSAGE_NODE));
+  messages->next = NULL;
+  chatTwo->messages = messages;
 
-  strcpy(chat->name, chatName);
-  strcpy(chat->users[0], System->user->username);
-  strcpy(chat->users[1], selectedUsername);
-  chat->next = NULL;
+  strcpy(chatTwo->name, chatName);
+  strcpy(chatTwo->users[0], selectedUsername);
+  strcpy(chatTwo->users[1], System->user->username);
+  chatTwo->next = NULL;
 
-  return chat;
+  return chatOne;
 }
