@@ -26,7 +26,13 @@ int loadUsers(SYSTEM *System)
 
   while (1)
   {
+    if (feof(usersFile))
+    {
+      break;
+    }
+
     int j = 0;
+    flag = 0;
     fgets(line, 102, usersFile);
     lineNumber++;
 
@@ -39,6 +45,36 @@ int loadUsers(SYSTEM *System)
           flag = 1;
           j++;
           username[i] = '\0';
+          break;
+        }
+
+        if (line[j] == '\n')
+        {
+          flag = 0;
+          break;
+        }
+
+        if (line[j] < 48)
+        {
+          flag = 0;
+          break;
+        }
+
+        if ((line[j] < 65) && (line[j] > 57))
+        {
+          flag = 0;
+          break;
+        }
+
+        if ((line[j] < 97) && (line[j] > 90))
+        {
+          flag = 0;
+          break;
+        }
+
+        if (line[j] > 122)
+        {
+          flag = 0;
           break;
         }
 
@@ -57,11 +93,35 @@ int loadUsers(SYSTEM *System)
     {
       for (int i = 0; i < 49; i++)
       {
-        if (line[j] == '\n')
+        if ((line[j] == '\n') || line[j] == '\0')
         {
           flag = 0;
           j++;
           password[i] = '\0';
+          break;
+        }
+
+        if (line[j] < 48)
+        {
+          flag = 1;
+          break;
+        }
+
+        if ((line[j] < 65) && (line[j] > 57))
+        {
+          flag = 1;
+          break;
+        }
+
+        if ((line[j] < 97) && (line[j] > 90))
+        {
+          flag = 1;
+          break;
+        }
+
+        if (line[j] > 122)
+        {
+          flag = 1;
           break;
         }
 
@@ -78,11 +138,6 @@ int loadUsers(SYSTEM *System)
 
     createUserNode(System, username, password);
     usersCount++;
-
-    if (feof(usersFile))
-    {
-      break;
-    }
   }
 
   fclose(usersFile);

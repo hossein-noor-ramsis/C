@@ -31,7 +31,7 @@ int main()
   {
     printf("Enter Command: ");
     gets(command);
-    system("cls");
+    // system("cls");
 
     if (strcmp(command, SIGNUP) == 0)
     {
