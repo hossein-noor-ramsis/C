@@ -10,7 +10,7 @@ int selectChat(SYSTEM *System)
 
   if (System->user == NULL)
   {
-    printf("Error: No user is currently logged in\n");
+    printf("Error: No user is currently logged in.\n");
     return 1;
   }
 
@@ -18,11 +18,11 @@ int selectChat(SYSTEM *System)
 
   if (strcmp(selectedChatName, chat->name) != 0)
   {
-    printf("Error: Chat %s not found for user %s\n", selectedChatName, System->user->username);
+    printf("Error: Chat %s not found for user %s.\n", selectedChatName, System->user->username);
     return 1;
   }
 
   System->chat = chat;
-  printf("Chat %s has been selected as the current chat.\n", selectedChatName);
+  printf("Chat %s has been selected as the current chat\n", selectedChatName);
   return 0;
 }

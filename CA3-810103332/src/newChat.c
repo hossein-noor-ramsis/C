@@ -13,7 +13,7 @@ int newChat(SYSTEM *System)
 
   if (System->user == NULL)
   {
-    printf("Error: No user is currently logged in\n");
+    printf("Error: No user is currently logged in.\n");
     return 1;
   }
 

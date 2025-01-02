@@ -84,7 +84,7 @@ int loadUsers(SYSTEM *System)
 
       if (flag == 0)
       {
-        printf("Warning: Invalid format in line %d, Skipping.\n", lineNumber);
+        printf("Warning: Invalid format in line %d. Skipping.\n", lineNumber);
         continue;
       }
     }
@@ -131,7 +131,7 @@ int loadUsers(SYSTEM *System)
 
       if (flag == 1)
       {
-        printf("Warning: Invalid format in line %d, Skipping.\n", lineNumber);
+        printf("Warning: Invalid format in line %d. Skipping.\n", lineNumber);
         continue;
       }
     }
@@ -142,6 +142,6 @@ int loadUsers(SYSTEM *System)
 
   fclose(usersFile);
 
-  printf("Users successfully loaded from myfile.txt, %d user(s) added.\n", usersCount);
+  printf("Users successfully loaded from %s , %d user(s) added.\n", filename, usersCount);
   return 0;
 }

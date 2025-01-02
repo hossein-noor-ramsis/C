@@ -4,9 +4,10 @@ int logout(SYSTEM *System)
 {
   if (System->user)
   {
-    printf("user %s logged out successfully!\n", System->user->username);
+    printf("User %s logged out successfully!\n", System->user->username);
 
     System->user = NULL;
+    System->chat = NULL;
     return 1;
   }
 
