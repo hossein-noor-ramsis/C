@@ -15,20 +15,18 @@
 int main()
 {
   int isExit = 0;
-  char command[16];
+  char *command = calloc(1, sizeof(char));
 
-  // system
+  // system init
   SYSTEM *System = calloc(1, sizeof(SYSTEM));
   System->users = createUserNode(System, "HEAD", "\0");
   System->user = NULL;
   System->chat = NULL;
 
-  // users linked list
-
+  // app
   while (!isExit)
   {
-    printf("Enter Command: ");
-    gets(command);
+    getCommand(command);
     // system("cls");
 
     if (strcmp(command, SIGNUP) == 0)

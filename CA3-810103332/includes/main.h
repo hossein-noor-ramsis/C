@@ -4,6 +4,8 @@
 
 #include "structs.h"
 
+#include "getCommand.h"
+
 #include "searchUserNode.h"
 #include "createUserNode.h"
 
