@@ -35,11 +35,11 @@ int newChat(SYSTEM *System)
     return 1;
   }
 
-  if (strcmp(chatName, searchChatNode(System, selectedUsername, chatName)->name) == 0)
-  {
-    printf("Error: Chat with name %s already exists for user: %d.\n", chatName, selectedUsername);
-    return 1;
-  }
+  // if (strcmp(chatName, searchChatNode(System, selectedUsername, chatName)->name) == 0)
+  // {
+  //   printf("Error: Chat with name %s already exists for user: %s.\n", chatName, selectedUsername);
+  //   return 1;
+  // }
 
   createChatNode(System, System->user->username, selectedUsername, chatName);
   createChatNode(System, selectedUsername, System->user->username, chatName);
