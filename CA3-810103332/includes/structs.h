@@ -9,8 +9,9 @@ typedef struct USER_NODE
 
 typedef struct MESSAGE_NODE
 {
-  struct USER_NODE *author;
-  struct CHAT_NODE *chat;
+  char sender[50];
+  char receiver[50];
+  char chatName[50];
   char content[256];
 
   struct MESSAGE_NODE *next;
@@ -19,7 +20,8 @@ typedef struct MESSAGE_NODE
 typedef struct CHAT_NODE
 {
   char name[50];
-  char users[2][50];
+  char sender[50];
+  char receiver[50];
   MESSAGE_NODE *messages;
 
   struct CHAT_NODE *next;
@@ -29,5 +31,6 @@ typedef struct SYSTEM
 {
   USER_NODE *user;
   CHAT_NODE *chat;
+
   USER_NODE *users;
 } SYSTEM;

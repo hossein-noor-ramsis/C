@@ -1,0 +1,1 @@
+int freeUserNode(USER_NODE *users);

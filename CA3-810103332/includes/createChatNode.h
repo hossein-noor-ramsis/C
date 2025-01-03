@@ -1,1 +1,1 @@
-CHAT_NODE *createChatNode(SYSTEM *System, char selectedUsername[50], char chatName[50]);
+CHAT_NODE *createChatNode(SYSTEM *System, char sender[50], char receiver[50], char chatName[50]);

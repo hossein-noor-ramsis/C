@@ -4,7 +4,7 @@ int signup(SYSTEM *System)
 {
   char username[50];
   char password[50];
-  USER_NODE *user = malloc(sizeof(USER_NODE));
+  USER_NODE *user = calloc(1, sizeof(USER_NODE));
 
   printf("Username: ");
   gets(username);

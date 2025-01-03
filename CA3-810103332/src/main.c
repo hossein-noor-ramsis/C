@@ -17,15 +17,13 @@ int main()
   int isExit = 0;
   char command[16];
 
-  // users linked list
-  USER_NODE *users = malloc(sizeof(USER_NODE));
-  users->next = NULL;
-
   // system
-  SYSTEM *System = malloc(sizeof(SYSTEM));
-  System->users = users;
+  SYSTEM *System = calloc(1, sizeof(SYSTEM));
+  System->users = createUserNode(System, "HEAD", "\0");
   System->user = NULL;
   System->chat = NULL;
+
+  // users linked list
 
   while (!isExit)
   {
@@ -74,6 +72,8 @@ int main()
       printf("Error: Unknown command.\n");
     }
   }
+
+  freeUserNode(System->users);
 
   return 0;
 }

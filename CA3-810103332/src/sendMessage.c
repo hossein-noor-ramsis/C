@@ -11,13 +11,14 @@ int sendMessage(SYSTEM *System)
     return 1;
   }
 
-  strcpy(receiver, System->chat->users[1]);
+  strcpy(receiver, System->chat->receiver);
 
   printf("Receiver: %s\n", receiver);
   printf("Enter message: ");
   gets(messageContent);
 
-  createMessageNode(System, receiver, System->chat->name, messageContent);
+  createMessageNode(System, System->user->username, receiver, System->chat->name, messageContent);
+  createMessageNode(System, receiver, receiver, System->chat->name, messageContent);
 
   return 0;
 }

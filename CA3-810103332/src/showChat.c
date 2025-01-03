@@ -15,7 +15,7 @@ int showChat(SYSTEM *System)
 
   while (temp != NULL)
   {
-    printf("%s: ", temp->author->username);
+    printf("%s: ", temp->sender);
     printf("%s\n", temp->content);
 
     temp = temp->next;
