@@ -2,6 +2,7 @@
 
 CHAT_NODE *createChatNode(SYSTEM *System, char sender[50], char receiver[50], char chatName[50])
 {
+  // initialize
   USER_NODE *user;
 
   CHAT_NODE *temp;
@@ -9,7 +10,8 @@ CHAT_NODE *createChatNode(SYSTEM *System, char sender[50], char receiver[50], ch
 
   MESSAGE_NODE *messages = calloc(1, sizeof(MESSAGE_NODE));
   messages->next = NULL;
-  
+
+  // find sender user
   user = searchUserNode(System, sender);
   temp = user->chats;
 
@@ -19,6 +21,7 @@ CHAT_NODE *createChatNode(SYSTEM *System, char sender[50], char receiver[50], ch
   }
   temp->next = chat;
 
+  // assign values to the chat node
   chat->messages = messages;
   strcpy(chat->name, chatName);
   strcpy(chat->sender, sender);

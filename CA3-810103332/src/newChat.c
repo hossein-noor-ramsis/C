@@ -2,15 +2,18 @@
 
 int newChat(SYSTEM *System)
 {
+  // initialize
   char chatName[50];
   char selectedUsername[50];
 
+  // input
   printf("Enter chat name: ");
   gets(chatName);
 
   printf("Enter selected username: ");
   gets(selectedUsername);
 
+  // validation
   if (System->user == NULL)
   {
     printf("Error: No user is currently logged in.\n");
@@ -41,6 +44,7 @@ int newChat(SYSTEM *System)
     return 1;
   }
 
+  // create new chat
   createChatNode(System, System->user->username, selectedUsername, chatName);
   createChatNode(System, selectedUsername, System->user->username, chatName);
 

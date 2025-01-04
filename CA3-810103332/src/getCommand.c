@@ -2,9 +2,11 @@
 
 int getCommand(char *command)
 {
+  // initialize
   unsigned int size = 1;
   char temp = ' ';
 
+  // get command by dynamic array
   printf("Enter Command: ");
 
   while (1)

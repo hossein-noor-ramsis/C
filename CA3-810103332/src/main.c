@@ -14,6 +14,7 @@
 
 int main()
 {
+  // initialize
   int isExit = 0;
   char *command = calloc(1, sizeof(char));
 
@@ -23,7 +24,7 @@ int main()
   System->user = NULL;
   System->chat = NULL;
 
-  // app
+  // app running
   while (!isExit)
   {
     getCommand(command);

@@ -2,12 +2,15 @@
 
 int selectChat(SYSTEM *System)
 {
+  // initialize
   char selectedChatName[50];
   CHAT_NODE *chat;
 
+  // input
   printf("Enter Chat Name: ");
   gets(selectedChatName);
 
+  // validation
   if (System->user == NULL)
   {
     printf("Error: No user is currently logged in.\n");
@@ -22,6 +25,7 @@ int selectChat(SYSTEM *System)
     return 1;
   }
 
+  // set the selected chat
   System->chat = chat;
   printf("Chat %s has been selected as the current chat\n", selectedChatName);
   return 0;

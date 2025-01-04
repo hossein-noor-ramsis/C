@@ -2,6 +2,7 @@
 
 int freeUserNode(USER_NODE *users)
 {
+  // initialize
   USER_NODE *user = users;
   CHAT_NODE *chat;
   MESSAGE_NODE *message;
@@ -10,6 +11,7 @@ int freeUserNode(USER_NODE *users)
   CHAT_NODE *chatTemp;
   MESSAGE_NODE *messageTemp;
 
+  // iterate each user chats and messages to free them all
   while (user->next != NULL)
   {
     chat = user->chats;

@@ -40,6 +40,7 @@ int loadUsers(SYSTEM *System)
     {
       for (int i = 0; i < 49; i++)
       {
+        // brake loop with flag == 0 means there is an error
         if (line[j] == ' ')
         {
           flag = 1;
@@ -91,6 +92,7 @@ int loadUsers(SYSTEM *System)
 
     if (flag == 1)
     {
+      // brake loop with flag == 1 means there is an error
       for (int i = 0; i < 49; i++)
       {
         if ((line[j] == '\n') || line[j] == '\0')

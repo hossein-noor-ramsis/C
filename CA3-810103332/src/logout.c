@@ -2,15 +2,17 @@
 
 int logout(SYSTEM *System)
 {
-  if (System->user)
+  // validation
+  if (System->user == NULL)
   {
-    printf("User %s logged out successfully!\n", System->user->username);
-
-    System->user = NULL;
-    System->chat = NULL;
+    printf("Error: No user is currently logged in.\n");
     return 1;
   }
 
-  printf("Error: No user is currently logged in.\n");
+  // logout the user
+  printf("User %s logged out successfully!\n", System->user->username);
+
+  System->user = NULL;
+  System->chat = NULL;
   return 0;
 }
