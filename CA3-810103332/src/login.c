@@ -24,7 +24,7 @@ int login(SYSTEM *System)
 
   user = searchUserNode(System, username);
 
-  if (strcmp(user->password, password) != 0)
+  if ((strcmp(user->username, username) != 0) || (strcmp(user->password, password) != 0))
   {
     printf("Error: Invalid username or password.\n");
 
