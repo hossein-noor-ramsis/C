@@ -19,7 +19,7 @@ int signup(SYSTEM *System)
 
   if (strcmp(user->username, username) == 0)
   {
-    printf("Error: Username repeatedOne already exists.\n");
+    printf("Error: Username %s already exists.\n", username);
 
     return 1;
   }
