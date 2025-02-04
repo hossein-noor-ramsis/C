@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define BOARD_LENGTH 4
+#define BOARD_LENGTH 2
 
 //* functions prototype
 // screen and board prototypes
@@ -38,9 +38,26 @@ int main()
 
 	while (flag)
 	{
+
 		system("cls");
 
 		move = printBoard(board);
+
+		if (checkIsGameWin(board))
+		{
+			flag = 0;
+			gameWin(board);
+
+			return 0;
+		}
+
+		if (checkIsGameOver(board))
+		{
+			flag = 0;
+			gameOver(board);
+
+			return 0;
+		}
 
 		switch (move)
 		{
@@ -80,22 +97,6 @@ int main()
 		default:
 			printf("\nInvalid Move\n");
 			break;
-		}
-
-		if (checkIsGameWin(board))
-		{
-			flag = 0;
-			gameWin(board);
-
-			return 0;
-		}
-
-		if (checkIsGameOver(board))
-		{
-			flag = 0;
-			gameOver(board);
-
-			return 0;
 		}
 	}
 
@@ -142,7 +143,7 @@ char printBoard(int board[BOARD_LENGTH][BOARD_LENGTH])
 				{
 					printf("|  %d", board[i][j]);
 				}
-				else if (digitsCount == 3)
+				else if (digitsCount == BOARD_LENGTH - 1)
 				{
 					printf("| %d", board[i][j]);
 				}
@@ -175,9 +176,9 @@ void addRandom(int board[BOARD_LENGTH][BOARD_LENGTH])
 
 	while (flag)
 	{
-		int random_number = rand() % 2 == 0 ? 2 : BOARD_LENGTH;
+		int random_number = rand() % 2 == 0 ? 2 : 4;
 		int random_index_i = rand() % BOARD_LENGTH;
-		int random_index_j = rand() % 25;
+		int random_index_j = rand() % BOARD_LENGTH;
 
 		if (board[random_index_i][random_index_j] == 0)
 		{
@@ -215,7 +216,7 @@ int moveLeft(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][
 
 		for (int i = 0; i < BOARD_LENGTH; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < BOARD_LENGTH - 1; j++)
 			{
 				if (board[i][j] == 0 && board[i][j + 1])
 				{
@@ -244,7 +245,7 @@ int moveLeft(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][
 
 		for (int i = 0; i < BOARD_LENGTH; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < BOARD_LENGTH - 1; j++)
 			{
 				if (board[i][j] == 0)
 				{
@@ -293,7 +294,7 @@ int moveRight(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH]
 
 		for (int i = 0; i < BOARD_LENGTH; i++)
 		{
-			for (int j = 3; j > 0; j--)
+			for (int j = BOARD_LENGTH - 1; j > 0; j--)
 			{
 				if (board[i][j] == 0 && board[i][j - 1])
 				{
@@ -305,7 +306,7 @@ int moveRight(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH]
 					board[i][j] = board[i][j - 1];
 					board[i][j - 1] = 0;
 
-					for (int k = j; k < 3; k++)
+					for (int k = j; k < BOARD_LENGTH - 1; k++)
 					{
 						if (board[i][k + 1] == 0)
 						{
@@ -322,7 +323,7 @@ int moveRight(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH]
 
 		for (int i = 0; i < BOARD_LENGTH; i++)
 		{
-			for (int j = 3; j > 0; j--)
+			for (int j = BOARD_LENGTH - 1; j > 0; j--)
 			{
 				if (board[i][j] == 0)
 				{
@@ -334,7 +335,7 @@ int moveRight(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH]
 					board[i][j] = board[i][j] * 2;
 					board[i][j - 1] = 0;
 
-					for (int k = j; k < 3; k++)
+					for (int k = j; k < BOARD_LENGTH - 1; k++)
 					{
 						if (board[i][k + 1] == 0)
 						{
@@ -369,7 +370,7 @@ int moveUp(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][BO
 	{
 		check = 0;
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < BOARD_LENGTH - 1; i++)
 		{
 			for (int j = 0; j < BOARD_LENGTH; j++)
 			{
@@ -398,7 +399,7 @@ int moveUp(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][BO
 			}
 		}
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < BOARD_LENGTH - 1; i++)
 		{
 			for (int j = 0; j < BOARD_LENGTH; j++)
 			{
@@ -447,7 +448,7 @@ int moveDown(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][
 	{
 		check = 0;
 
-		for (int i = 3; i > 0; i--)
+		for (int i = BOARD_LENGTH - 1; i > 0; i--)
 		{
 			for (int j = 0; j < BOARD_LENGTH; j++)
 			{
@@ -461,7 +462,7 @@ int moveDown(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][
 					board[i][j] = board[i - 1][j];
 					board[i - 1][j] = 0;
 
-					for (int k = i; k < 3; k++)
+					for (int k = i; k < BOARD_LENGTH - 1; k++)
 					{
 						if (board[k + 1][j] == 0)
 						{
@@ -476,7 +477,7 @@ int moveDown(int board[BOARD_LENGTH][BOARD_LENGTH], int tempBoard[BOARD_LENGTH][
 			}
 		}
 
-		for (int i = 3; i > 0; i--)
+		for (int i = BOARD_LENGTH - 1; i > 0; i--)
 		{
 			for (int j = 0; j < BOARD_LENGTH; j++)
 			{
@@ -592,6 +593,7 @@ int checkIsGameOver(int board[BOARD_LENGTH][BOARD_LENGTH])
 		return 1;
 	}
 
+	printf("test: %d, %d", firstCondition, seccondCondition);
 	return 0;
 }
 
